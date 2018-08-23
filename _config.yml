@@ -35,17 +35,17 @@ favicon:
   #ms_browserconfig: /images/browserconfig.xml
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT"
+keywords: "Hexo, NexT" #网站关键字########################################
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
-rss:
+rss: #rss这里不设置，站点文件需要配置。
 
 footer:
   # Specify the date when the site was setup.
   # If not defined, current year will be used.
-  #since: 2015
+  since: 2018 #网站时间
 
   # Icon between year and copyright info.
   icon: user
@@ -83,7 +83,7 @@ index_with_subtitle: false
 
 
 # ---------------------------------------------------------------
-# Menu Settings
+# Menu Settings 菜单设置
 # ---------------------------------------------------------------
 
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash from link value (/archives -> archives).
@@ -91,44 +91,56 @@ index_with_subtitle: false
 # Key is the name of menu item. If translate for this menu will find in languages - this translate will be loaded; if not - Key name will be used. Key is case-senstive.
 # Value before `||` delimeter is the target link.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
+#菜单显示项。菜单路径设置 如果hexo在二级目录放置要去掉
 menu:
-  home: / || home
-  #about: /about/ || user
-  #tags: /tags/ || tags
-  #categories: /categories/ || th
-  archives: /archives/ || archive
+  home: / || home #主页
+  about: /about/ || user #关于
+  tags: /tags/ || tags #标签
+  categories: /categories/ || th #分类
+  archives: /archives/ || archive #归档
   #schedule: /schedule/ || calendar
-  #sitemap: /sitemap.xml || sitemap
+  #sitemap: /sitemap.xml || sitemap 这里是可以不用开启，该搜索引擎使用个，需要安装插件
   #commonweal: /404/ || heartbeat
+  search: /search #搜索
+  #something: something #其他
 
 # Enable/Disable menu icons.
+# 标签前面的图标
 menu_icons:
   enable: true
-
+  # Icon Mapping.
+  home: home
+  about: user
+  tags: tags
+  categories: th
+  archives: archive
+  commonweal: heartbeat
+  search: search
 
 # ---------------------------------------------------------------
 # Scheme Settings
 # ---------------------------------------------------------------
 
-# Schemes
-scheme: Muse
+# Schemes next主题中的三个schemes下面的三选一
+scheme: Pisces
 #scheme: Mist
 #scheme: Pisces
 #scheme: Gemini
 
 
 # ---------------------------------------------------------------
-# Sidebar Settings
+# Sidebar Settings 侧边栏设置
 # ---------------------------------------------------------------
 
-# Social Links.
+# Social Links. 侧边栏社交文件
 # Usage: `Key: permalink || icon`
 # Key is the link label showing to end users.
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
-#social:
-  #GitHub: https://github.com/yourname || github
-  #E-Mail: mailto:yourname@gmail.com || envelope
+social: #侧边栏社交链接
+  GitHub: https://github.com/silencewmy || github
+  #E-Mail: silencewmy@yeah.net
+  知乎: https://www.zhihu.com/people/silencewmy
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
@@ -138,14 +150,18 @@ scheme: Muse
   #Instagram: https://instagram.com/yourname || instagram
   #Skype: skype:yourname?call|chat || skype
 
-social_icons:
+
+social_icons: #社交链接对应的图标
   enable: true
   icons_only: false
   transition: false
+  GitHub: github
+  E-Mail: email
+  知乎: zhihu
 
-# Blog rolls
+# Blog rolls 友情链接
 links_icon: link
-links_title: Links
+links_title: Links #友情链接
 links_layout: block
 #links_layout: inline
 #links:
@@ -154,13 +170,13 @@ links_layout: block
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
 # in site  directory(source/uploads): /uploads/avatar.gif
-#avatar: /images/avatar.gif
+#avatar: /images/avatar.gif #博主头像，可以放外链
 
-# Table Of Contents in the Sidebar
+# Table Of Contents in the Sidebar #文章自动显示目录
 toc:
   enable: true
 
-  # Automatically add list number to toc.
+  # Automatically add list number to toc. #文章是否自动显示数字序号
   number: true
 
   # If true, all words will placed on next lines if header width longer then sidebar width.
@@ -172,9 +188,9 @@ toc:
 #creative_commons: by-nc-sa
 #creative_commons:
 
-sidebar:
+sidebar: #侧边栏
   # Sidebar Position, available value: left | right (only for Pisces | Gemini).
-  position: left
+  position: left #侧边栏放在哪一侧
   #position: right
 
   # Sidebar Display, available value (only for Muse | Mist):
@@ -182,10 +198,10 @@ sidebar:
   #  - always  expand for all pages automatically
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  Totally remove sidebar including sidebar toggle.
-  display: post
-  #display: always
-  #display: hide
-  #display: remove
+  display: post #在文章页面时（拥有目录列表）显示
+  #display: always #在所有页面都显示
+  #display: hide #在所有页面都隐藏
+  #display: remove #完全隐藏
 
   # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).
   offset: 12
@@ -215,8 +231,8 @@ excerpt_description: true
 
 # Automatically Excerpt. Not recommend.
 # Please use <!-- more --> in the post to control excerpt accurately.
-auto_excerpt:
-  enable: false
+auto_excerpt: #为true，首页文章会显示 阅读全文
+  enable: true
   length: 150
 
 # Post meta display settings
@@ -230,18 +246,18 @@ post_meta:
 # Dependencies: https://github.com/willin/hexo-wordcount
 post_wordcount:
   item_text: true
-  wordcount: false
-  min2read: false
+  wordcount: true
+  min2read: true
   totalcount: false
   separated_meta: true
 
-# Wechat Subscriber
+# Wechat Subscriber #文章内显示微信二维码
 #wechat_subscriber:
   #enabled: true
   #qcode: /path/to/your/wechatqcode ex. /uploads/wechat-qcode.jpg
   #description: ex. subscribe to my blog by scanning my public wechat account
 
-# Reward
+# Reward #打赏设置
 #reward_comment: Donate comment here
 #wechatpay: /images/wechatpay.jpg
 #alipay: /images/alipay.jpg
@@ -277,7 +293,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night
 
 
 # ---------------------------------------------------------------
@@ -304,23 +320,23 @@ font:
   # `size: xx`. Use `px` as unit.
 
   # Global font settings used on <body> element.
-  global:
+  global: #全局字体
     external: true
     family: Lato
     size:
 
   # Font settings for Headlines (h1, h2, h3, h4, h5, h6).
   # Fallback to `global` font settings.
-  headings:
+  headings: #标题字体
     external: true
     family:
     size:
 
   # Font settings for posts.
   # Fallback to `global` font settings.
-  posts:
+  posts: #文章字体
     external: true
-    family:
+    family: 华文行楷
 
   # Font settings for Logo.
   # Fallback to `global` font settings.
@@ -330,14 +346,14 @@ font:
     size:
 
   # Font settings for <code> and code blocks.
-  codes:
+  codes: #代码字体
     external: true
     family:
     size:
 
 
 # ---------------------------------------------------------------
-# Third Party Services Settings
+# Third Party Services Settings 第三方插件设置
 # ---------------------------------------------------------------
 
 # MathJax Support
@@ -349,18 +365,18 @@ mathjax:
 # Han Support docs: https://hanzi.pro/
 han: false
 
-# Swiftype Search API Key
+# Swiftype Search API Key #第三方搜索
 #swiftype_key:
 
-# Baidu Analytics ID
+# Baidu Analytics ID #百度分析
 #baidu_analytics:
 
-# Duoshuo ShortName
+# Duoshuo ShortName #多说评论设置，需要自己注册账号
 #duoshuo_shortname:
 
 # Disqus
-disqus:
-  enable: false
+disqus: #评论系统
+  enable: true
   shortname:
   count: true
 
@@ -418,10 +434,10 @@ gitment:
 # Available value:
 #    button | slide
 # Warning: Baidu Share does not support https.
-#baidushare:
+baidushare: true #百度分享
 ##  type: button
 
-# Share
+# Share #分享设置 对应评论系统
 # This plugin is more useful in China, make sure you known how to use it.
 # And you can find the use guide at official webiste: http://www.jiathis.com/.
 # Warning: JiaThis does not support https.
@@ -485,11 +501,11 @@ needmoreshare2:
 # Make duoshuo show UA
 # user_id must NOT be null when admin_enable is true!
 # you can visit http://dev.duoshuo.com get duoshuo user id.
-duoshuo_info:
-  ua_enable: true
-  admin_enable: false
+duoshuo_info: #多说设置
+  ua_enable: true #开启显示UA
+  admin_enable: false #是用于显示 【博主】 文字
   user_id: 0
-  #admin_nickname: Author
+  #admin_nickname: Author #博主名字
 
 # Post widgets & FB/VK comments settings.
 # ---------------------------------------------------------------
@@ -547,9 +563,9 @@ firestore:
 
 # Show PV/UV of the website/page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
-busuanzi_count:
+busuanzi_count: #第三方用户访问插件，这里据说直接开启
   # count values only if the other configs are false
-  enable: false
+  enable: true
   # custom uv span for the whole site
   site_uv: true
   site_uv_header: <i class="fa fa-user"></i>
@@ -560,7 +576,7 @@ busuanzi_count:
   site_pv_footer:
   # custom pv span for one page only
   page_pv: true
-  page_pv_header: <i class="fa fa-file-o"></i>
+  page_pv_header: <i class="fa fa-file-o"></i>&nbsp&nbsp阅读数
   page_pv_footer:
 
 
@@ -653,7 +669,7 @@ tabs:
 #! ---------------------------------------------------------------
 
 # Use velocity to animate everything.
-motion:
+motion: #动画效果
   enable: true
   async: false
   transition:
@@ -694,8 +710,10 @@ pace: false
 # pace_theme: pace-theme-center-simple
 pace_theme: pace-theme-minimal
 
+#背景动画效果
+
 # Canvas-nest
-canvas_nest: false
+canvas_nest: true
 
 # three_waves
 three_waves: false

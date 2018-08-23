@@ -15,7 +15,8 @@ menu:
   search: 搜索
   schedule: 日程表
   sitemap: 站点地图
-  commonweal: 公益404
+  commonweal: 公益
+  something: 有料
 
 sidebar:
   overview: 站点概览
@@ -46,8 +47,8 @@ page:
   tags: 标签
 
 footer:
-  powered: "由 %s 强力驱动"
-  theme: 主题
+  powered: " %s " #"由 %s 强力驱动"
+  theme: " " #主题
 
 counter:
   tag_cloud:
