@@ -1,34 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F08%2F25%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[开始入坑]]></title>
-    <url>%2F2018%2F08%2F20%2F%E4%BD%A0%E5%A5%BD%EF%BC%8Chexo%2F</url>
-    <content type="text"><![CDATA[使用sublime添加的内容markdown格式写博客 技术改变生活]]></content>
+    <title><![CDATA[markdown学习]]></title>
+    <url>%2F2018%2F08%2F25%2Fmarkdown%E5%AD%A6%E4%B9%A0%2F</url>
+    <content type="text"><![CDATA[简单轻量级的标记语法 基本用法：单个回车表示空格 连续回车表示分段 行尾加两个空格表示段内换行 可以使用HTML标签 标题使用 #每一个#代表以及标题 最多支持6级标题 例如例如例如列表使用无序列表使用（，+，-） 列表使用：（，+，-）中选一个加一个空格例如： 列表 类表 列表 列表3 列表 有序列表数字加点号再空格 音乐 数据 #嵌套 文字格式**粗体** __粗体__ 斜体*斜体* _斜体_ 删除线链接链接语法为 [你显示的](网址) 百度 图片语法： ！[替代文本]（链接地址 &quot;&quot;） 引用 一级引用 二级引用 三级引用 目录在要生成目录的地方写 [TOC]或者[toc]，同时大写或小写。 水平分割线一串‘-’或者‘*’ 表格| 表头 | 表头 | 表头 | | ：-----| ------：|:-----:| |computer|wmy|sks| |表头|表头 |表头| |:-----|-----:|:-----:| |内容|内容|内容| :– 左对齐，–: 表示右对齐， :–: 居中 效果图：|年龄|姓名||—-|—-||张三|李四| #文档头规范 title：文章标题 date：文章创建时间 categoties：分类 tags： 标签 toc： true or false 是否显示目录需要 top：填数字，和优先级差不多意思 description：文章摘要 comments：是否允许评论 keywords：文章关键字]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>Java</tag>
-        <tag>生活</tag>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[开始入坑]]></title>
-    <url>%2F2018%2F08%2F20%2F%E5%BC%80%E5%A7%8B%E5%85%A5%E5%9D%91%2F</url>
-    <content type="text"><![CDATA[开始入坑在网上看到写博客的重要性于是开启了在GitHub搭建个人博客的想法]]></content>
-      <categories>
-        <category>点滴</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>生活</tag>
-        <tag>GitHub</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
 </search>
