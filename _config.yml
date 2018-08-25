@@ -104,7 +104,7 @@ menu:
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap 这里是可以不用开启，该搜索引擎使用个，需要安装插件
   #commonweal: /404/ || heartbeat
-  search: /search #搜索
+  #search: /search #搜索
   #something: something #其他
 
 # Enable/Disable menu icons.
@@ -623,7 +623,7 @@ algolia_search:
 # Local search
 # Dependencies: https://github.com/flashlab/hexo-generator-search
 local_search:
-  enable: false
+  enable: true #站内搜索设置
   # if auto, trigger search by changing input
   # if manual, trigger search by pressing enter key or search button
   trigger: auto
