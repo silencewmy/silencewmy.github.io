@@ -94,4 +94,10 @@ live2d:
     height: 300
   mobile:
     show: false
-  
+
+# 搜索
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
