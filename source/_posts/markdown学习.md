@@ -64,6 +64,11 @@ categories: 技术
     链接语法为 [你显示的](网址)
 [百度](http://www.baidu.com "百度一下你就知道")
 
+将网址放在尖括号内，即网址原样生成。例如：  
+
+        <https://silencewmy.github.io/>
+<https://silencewmy.github.io/>
+
 # 图片
     语法： ！[替代文本]（链接地址 ""）
 
