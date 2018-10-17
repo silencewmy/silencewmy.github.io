@@ -18,7 +18,7 @@ permalink: :year/:month/:day/:title/ #生成文件名字的格式
 permalink_defaults:
 
 #侧边栏头像设置
-avatar: /images/猫咪.jpg
+avatar: /images/头像.jpg
 
 # Directory #目录配置
 source_dir: source #源文件夹，用来存放内容
