@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="明日复明日，明日剩不多">
-<meta property="og:type" content="website">
-<meta property="og:title" content="silencewmy blog">
-<meta property="og:url" content="http://yoursite.com/tags/java/index.html">
+<meta name="description" content="我们平时看到的运行java程序实际上经历了几次转换。 #引导java 能成为跨平台语言得益于它增加了一层中间码—字节码。我们知道操作系统不同代表它的操作指令的不同，而编程语言是要转换成能操作机器的机器指令才能运行。 这就使得在不同操作系统上运行同样的代码，你就要重新编译成该系统能够识别的操作指令。而虚拟机的作用就是屏蔽这些差异，它会根据相同的代码调用适合该操作系统的指令。虚拟机只识别字节码，不管什">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM第一步——静态存储结构">
+<meta property="og:url" content="http://yoursite.com/2018/10/18/JVM第一步——静态存储结构/index.html">
 <meta property="og:site_name" content="silencewmy blog">
-<meta property="og:description" content="明日复明日，明日剩不多">
+<meta property="og:description" content="我们平时看到的运行java程序实际上经历了几次转换。 #引导java 能成为跨平台语言得益于它增加了一层中间码—字节码。我们知道操作系统不同代表它的操作指令的不同，而编程语言是要转换成能操作机器的机器指令才能运行。 这就使得在不同操作系统上运行同样的代码，你就要重新编译成该系统能够识别的操作指令。而虚拟机的作用就是屏蔽这些差异，它会根据相同的代码调用适合该操作系统的指令。虚拟机只识别字节码，不管什">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-17T16:12:37.575Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="silencewmy blog">
-<meta name="twitter:description" content="明日复明日，明日剩不多">
+<meta name="twitter:title" content="JVM第一步——静态存储结构">
+<meta name="twitter:description" content="我们平时看到的运行java程序实际上经历了几次转换。 #引导java 能成为跨平台语言得益于它增加了一层中间码—字节码。我们知道操作系统不同代表它的操作指令的不同，而编程语言是要转换成能操作机器的机器指令才能运行。 这就使得在不同操作系统上运行同样的代码，你就要重新编译成该系统能够识别的操作指令。而虚拟机的作用就是屏蔽这些差异，它会根据相同的代码调用适合该操作系统的指令。虚拟机只识别字节码，不管什">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/java/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/18/JVM第一步——静态存储结构/"/>
 
 
 
 
 
-  <title>标签: java | silencewmy blog</title>
+  <title>JVM第一步——静态存储结构 | silencewmy blog</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     
 <!--此处添加-->
@@ -294,82 +296,289 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>java<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/JVM第一步——静态存储结构/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="silencewmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencewmy blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/18/JVM第一步——静态存储结构/" itemprop="url">
-              
-                <span itemprop="name">JVM第一步——静态存储结构</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">JVM第一步——静态存储结构</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-18T00:11:08+08:00"
-              content="2018-10-18" >
-          10-18
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-18T00:11:08+08:00">
+                2018-10-18
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/18/JVM第一步——静态存储结构/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/10/18/JVM第一步——静态存储结构/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,088
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/07/java-IO使用/" itemprop="url">
-              
-                <span itemprop="name">java IO使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-07T12:27:41+08:00"
-              content="2018-09-07" >
-          09-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p>我们平时看到的运行java程序实际上经历了几次转换。</p>
+<p>#引导<br><strong>java 能成为跨平台语言得益于它增加了一层中间码—字节码。</strong>我们知道操作系统不同代表它的操作指令的不同，而编程语言是要转换成能操作机器的机器指令才能运行。 这就使得在不同操作系统上运行同样的代码，你就要重新编译成该系统能够识别的操作指令。而虚拟机的作用就是屏蔽这些差异，它会根据相同的代码调用适合该操作系统的指令。虚拟机只识别字节码，不管什么操作系统你只要给我字节码我就可以识别(当然，不同的操作系统使用的虚拟机是不同的)。正是虚拟机这种<strong>只识别一种格式的文件但能调用不同的指令实现相同的功能</strong>的特性使得java语言可以“一次编写，到处运行”。保存我们的可运行程序也就是在磁盘中保存字节码文件(<strong>.class文件</strong>)。我们知道字节码文件格式后就知道了是如何和我们编写的java代码一一对应的了。下面进入正题。   </p>
+<hr>
+<p>######不容有错<br>文件肯定是二进制字节流。class文件也是但它没有分隔符，并且它需要你按照严格的顺序排列在其中，这样它就知道哪部分是什么含义。因此无论顺序、数量，那个字节代表什么含义，长度是多少，先后顺序都是严格限定的，不容有错、有变。</p>
+<p>#文件中的类型<br>class文件使用类似于C语言中的结构体的伪结构来存储数据，通篇只有两种类型： </p>
+<ul>
+<li>无符号数：用来描述数字、索引引用、数量值、或者UTF-8编码的值的字符串 u1,u2,u4,u8分别代表1，2，4，8个字节  </li>
+<li>表：由无符号数或者其它表作为数据项构成<br><em>描述同一类型但是数量不定的多个数据时（虚拟机不知道你到底定义了多少个），经常使用一个前置的容量计数器来告知接下来多少个是相同类型的</em></li>
+</ul>
+<p>#魔数-咖啡宝贝<br>class文件的前4个字节。为了确定这个文件时一个能被虚拟机接受的class文件。</p>
+<p>#class文件版本号<br>4字节，确定java版本</p>
+<p>#常量池 class文件的资源仓库<br>class文件中第一个表类型的数据项目，常量池中的常量数目不固定，因此需要一个容量计数器。常量池可以说有如下两部分：<br><em>常量池容量计数器  
+</em>各种常量数据</p>
+<p>##常量池计数器<br>一个u2类型的数据 从 <strong><em>1</em></strong> 开始计数人（只有常量池计数器是从1开始计数，留有0是为了不引用任何常量）<br>每一单位记录的是一个表结构，常量池中共有14种不同的常量类型即有14种表结构。<br>这些表结构可能会相互引用，例如代表名称的会存放字符串这种表结构的引用</p>
+<p>##常量数据<br>主要存放两大类（实际均为字符串）：</p>
+<ul>
+<li>字面量</li>
+<li>符号引用<br>  <em>标注：这里存放符号引用实现了Java的动态连接，JVM运行时据此解析翻译成具体的内存地址。</em></li>
+</ul>
+<p>#访问标志（u2类型）<br>用以标识该class文件的类别和访问权限。<br>例如：存放的是类还是接口。是public还是private。</p>
+<p>#确认继承关系的<br><strong>类索引</strong>：u2类型 保存该类的全限定名。<br><strong>父类索引</strong>：u2类型 保存其父类的全限定名 Java不允许多重继承 因此只有一个。<br><strong>接口索引集合</strong>： 一组u2类型的数据集合 保存该类实现的所有接口的全限定名集合。<br><em>按如上顺序排列在访问标志之后 所有保存的都是常量池中的索引</em></p>
+<p>#字段表集合 包括类级变量和实例变量<br><strong><em>都是字段的描述信息，不会列出从超类或者父类中继承而来的字段 试着来描述一个字段 会有作用域、实例还是类变量、可变性、并发性、变量类型、变量名称等等</em></strong>  </p>
+<ul>
+<li>字段计数器 u2类型 记录字段数据的数目</li>
+</ul>
+<p>下面是每个数据项都会有的内容：  </p>
+<ul>
+<li>字段修饰符</li>
+<li>简单名称（对常量池的引用）</li>
+<li>描述符（对常量池的引用）：描述符的作用是<strong>用来描述字段的数据类型【针对字段】、方法的参数列表（数量，类型，顺序）和方法的返回值【针对方法】</strong>   </li>
+<li>后面是可有可无的属性表集合用以存储额外的信息。</li>
+</ul>
+<p>#方法表集合<br><strong><em>和字段表集合一样是用来描述方法的有如下</em></strong> </p>
+<ul>
+<li>访问标志</li>
+<li>名称索引</li>
+<li>描述符</li>
+<li>属性表集合：方法里的Java代码经过编译器编译成字节码指令后存储在方法属性表隆重的code属性中</li>
+</ul>
+<p><em>方法表中不会存放没重写的方法</em><br><em>重载一个方法，除了要有<strong>相同</strong>的简单名称之外，还要求有<strong>不同</strong>的特征签名。</em><br><strong>特征签名：一个方法中各个参数在常量池中的字段符号引用的集合，返回值不再特征签名内</strong></p>
+<p>#属性表集合<br><em>在字段表，方法表，class文件中都可以携带自己的属性表集合。限制相对宽松一点，</em> <strong>结构自定义，但必须含有u2类型的名称索引和长度。   Java虚拟机会忽略掉它不认识的属性</strong>   <em>，每个属性的名称都是从常量池中引用</em><br>下面是几个常用属性：</p>
+<ul>
+<li>Code属性：<strong>出现在方法表中的属性集合内</strong><ul>
+<li>属性名称</li>
+<li>属性值长度</li>
+<li>操作数栈深度最大值</li>
+<li>局部变量表所需空间：局部变量表能存放的有<strong>方法的参数，catch的参数，定义的局部变量。</strong></li>
+<li>字节码长度： 实际有u2长度的限制，超过后编译器拒绝编译</li>
+<li>字节码</li>
+<li>显式异常处理表（含有四个字段）：<ul>
+<li>开始行：如果字节码在<strong>开始行</strong>与<strong>结束行</strong>之间出现了</li>
+<li>结束行：<strong>异常类型</strong>的异常，就跳转到<strong>跳转行</strong>开始</li>
+<li>跳转行：处理</li>
+<li>异常类型：  编译器使用这个异常表来实现Java异常和finally处理机制。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Exceptions属性：<strong>位于方法表中。</strong>列举出方法中可能抛出的受查异常。也就是throws后列举的异常。</li>
+<li>LineNumberTable属性：<strong>生成于class文件中。</strong>源码行号与字节码行号之间的对应关系。</li>
+<li>LocalVariableTable属性：<strong>生成于class文件中。</strong>栈帧中的局部变量表中的变量信息。例如变量的作用域表示为：变量的开始的字节码偏移量 和 长度来表示</li>
+<li>SourceFile属性：clss文件中。记录源码文件名称。</li>
+<li><p>ConstantValue属性：作用为通知虚拟机自动为变量赋值。<br>赋值时的情况：<br>1 实例变量（非static）：在实例构造器中进行赋值（init（））<br>2 类变量赋值：在类构造器中。  ConstantValue中。</p>
+</li>
+<li><p>Inner class属性：记录内部类与宿主类之间的关联。</p>
+</li>
+<li>StackMapTable属性：在类加载阶段的<strong>字节码验证</strong>阶段使用。内容的意义表示执行到该字节码时局部变量表和操作数栈的验证类型</li>
+</ul>
+<p>上述就是我们代码经过编译后的样子，这是我们的程序开始的第一步，下一步就是如何将程序从静态的硬盘转到动态的内存中去。结尾还有彩蛋欧~</p>
+<hr>
+<p>这里来补充一点字节码指令的相关信息。<br>JVM指令 = 操作码（一个字节长度） + 操作数<br>JVM采用的是面向操作数栈的 因此大多数指令不含操作数<br>字节码与数据类型：特定的操作只提供有限的类型相关指令。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/07/java-IO使用/" rel="next" title="java IO使用">
+                <i class="fa fa-chevron-left"></i> java IO使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -377,6 +586,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -663,6 +886,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -680,6 +907,18 @@
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/10/18/JVM第一步——静态存储结构/';
+          this.page.identifier = '2018/10/18/JVM第一步——静态存储结构/';
+          this.page.title = 'JVM第一步——静态存储结构';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
