@@ -46,8 +46,14 @@ git config --golbal user.email
 &ensp;&ensp;&ensp;&ensp;&ensp;就像是：喂，我知道你做过修改，过来给我报备一下，**我要记录在案**  
 3.Untracked files: 表示这些文件好没有被版本库记录，如果要记录，你需要git add一下。
 
+**git add**--------添加文件到暂存区  
+`git add . //添加所有文件`  
 **git diff + 文件名**   
 查看该文件做了什么修改。 本人没用过，不太会。。。
+
+**撤销更改*    
+1 知道修改了何处，手动更改回来，再add....commit  
+2 版本回复到上一个版本
 
 版本管理命令：  
 ```
@@ -75,25 +81,40 @@ git branch -vv //查看本地分支与哪些分支存在追踪关系
 `git branch 新分支名字`
 `git checkout 新分支名字`
 
+根据远程库中的某个分支创建本地分支：  
+`git checkout -b 名称 origin/远程的分支`
+
 与分支有关的命令：
+
 -  查看有哪些分支： git branch
--  删除分支：git branch -d 分支名
+-  删除分支：git branch -d 
+-  修改分支名称：git branch -m 旧 新
 
 合并分支：  
 `git merge 分支 //将指定分支合并到当前分支，一般搭配--no-ff 参数来使用 结果是禁用fast forward`   
 `还有一点就是会保存下被删除分支的版本号信息，方便来恢复`
 
+本地分支与远程分支之间存在一种**追踪关系**表明两者之间建立一对一的联系，或者说本地所有操作（push pull 等）针对的都是远程具有追踪关系的分支对象。  
+`git branch --set-upstream-to=远库/远分支 本地分支`
 
+**clone**----克隆远程库或者远程的分支
+```
+git clone 远程库的URL //克隆远程库
+git  clone -b 远程分支名 仓库名 本地目录 //克隆指定分支
 
+```
 
+**git stash ----隐藏修改，保存现场**  
+某些情况下当前修改还未完成但是需要解决其他地方的BUG，此时可以将其隐藏起来实现不让版本器记录。
+```
+git stash list //查看被隐藏起来的工作区
+git stash apply 恢复 git stash drop 删除
+git stash pop 恢复同时删除
 
+```
 
-
-
-
-
-
-
+**push**-------将本地提交到远程
+git push <远程主机名> <本地分支名>:<远程分支名>
 
 
 
