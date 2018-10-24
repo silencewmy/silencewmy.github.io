@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="明日复明日，明日剩不多">
-<meta property="og:type" content="website">
-<meta property="og:title" content="silencewmy blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/09/index.html">
+<meta name="description" content="class文件描述的各种信息需要加载到虚拟机才能运行和使用，将class文件转移到虚拟机中你需要知道它是如何转移，又转移到哪里。此处说明转移到哪里">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM————class文件在虚拟机中的目的地">
+<meta property="og:url" content="http://yoursite.com/2018/10/18/JVM第二步——class文件在虚拟机的目的地/index.html">
 <meta property="og:site_name" content="silencewmy blog">
-<meta property="og:description" content="明日复明日，明日剩不多">
+<meta property="og:description" content="class文件描述的各种信息需要加载到虚拟机才能运行和使用，将class文件转移到虚拟机中你需要知道它是如何转移，又转移到哪里。此处说明转移到哪里">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-24T01:32:05.877Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="silencewmy blog">
-<meta name="twitter:description" content="明日复明日，明日剩不多">
+<meta name="twitter:title" content="JVM————class文件在虚拟机中的目的地">
+<meta name="twitter:description" content="class文件描述的各种信息需要加载到虚拟机才能运行和使用，将class文件转移到虚拟机中你需要知道它是如何转移，又转移到哪里。此处说明转移到哪里">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/09/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/18/JVM第二步——class文件在虚拟机的目的地/"/>
 
 
 
 
 
-  <title>归档 | silencewmy blog</title>
+  <title>JVM————class文件在虚拟机中的目的地 | silencewmy blog</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     
 <!--此处添加-->
@@ -294,111 +296,296 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 9 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/JVM第二步——class文件在虚拟机的目的地/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="silencewmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencewmy blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/09/07/java-IO使用/" itemprop="url">
-              
-                <span itemprop="name">java IO使用</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">JVM————class文件在虚拟机中的目的地</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-07T12:27:41+08:00"
-              content="2018-09-07" >
-          09-07
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-18T15:22:37+08:00">
+                2018-10-18
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/18/JVM第二步——class文件在虚拟机的目的地/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/10/18/JVM第二步——class文件在虚拟机的目的地/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,892
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/05/git命令记录/" itemprop="url">
-              
-                <span itemprop="name">git命令记录</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-05T13:14:32+08:00"
-              content="2018-09-05" >
-          09-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <p><strong>class文件描述的各种信息需要加载到虚拟机才能运行和使用，将class文件转移到虚拟机中你需要知道它是如何转移，又转移到哪里。此处说明转移到哪里</strong></p>
+<a id="more"></a>
+<p>Java虚拟机将从系统得到的内存划分为不同区域来完成不同的用途，虚拟机采用自动内存管理机制使得我们不用为我们使用的class文件来分配空间，不同的数据区域有着不同的创建和销毁时间。</p>
+<p>###虚拟机的运行时数据区域<br>这是主要的class文件进入虚拟机要存放的地方，它有如下几个区域：  </p>
+<ul>
+<li>程序计数器</li>
+<li>虚拟机栈</li>
+<li>本地方法栈</li>
+<li>方法区</li>
+<li>堆</li>
+</ul>
+<p>####<em>程序计数器  –线程私有</em><br>使用的空间较小，是字节码行号指示器来选区下一条指令。每个线程都有自己独立的程序计数器来保证多线程可以顺利的执行（切换到正确的执行位置）。<strong>唯一一个不涉及OOM情况的区域</strong></p>
+<p>####<em>虚拟机栈 –线程私有</em><br>描述的是Java方法执行的内存模型，也就是方法整个执行过程都在这里。每一个方法的内容总会有数据的操作，这一区域实现的就是把所有这个方法要使用的数据保存进来然后进行想要的处理得出结果的过程。每一个栈帧对应一个方法，每个方法从调用到执行完成的过程对应着一个栈帧在虚拟机栈中的入栈和出栈。那么栈帧是什么呢。。  </p>
+<p>#####<em>栈帧 –一种数据结构，用来支持方法的调用和方法的执行，方法运行时所有的信息。</em><br>在编译程序代码的时候，栈帧需要多大的局部变量表，多深的操作栈都已经确定好了，在方法表的Code属性中，因此一个栈帧需要多大的内存已经确定，不会受到运行期数据的影响。线程中的方法调用链很长，有多个方法处于执行状态（就是入栈了），但只有位于栈顶的栈帧才有效<br>栈帧包括这几个部分：  </p>
+<ul>
+<li><strong>局部变量表</strong><ul>
+<li>用来存储方法局部变量和方法参数的一组存储空间。</li>
+<li>以变量槽作为单位（slot），64位用连续的两个slot</li>
+<li>通过索引定位的方式来使用局部变量表，索引范围从0到最大容量数（Code属性中）</li>
+<li>虚拟机是使用局部变量表来完成参数值到参数列表的传递</li>
+<li>局部变量中的存储空间是可以被重用的（针对的是方法体中定义的变量）</li>
+<li>局部变量的存储也是有顺序的，按照如下顺序来存放：<ul>
+<li>方法所属的对象的引用，也就是this 存放在索引0处</li>
+<li>然后是方法表的参数表中的参数顺序</li>
+<li>而后是方法体中定义的变量顺序和作用域来分配</li>
+</ul>
+</li>
+<li>除存储基本数据类型外，存储一个<strong>reference类型</strong>来表示<strong>对象的实例引用</strong>作用：<ul>
+<li>通过该引用可以直接或者间接的查找到该对象在堆中的数据存放的起始地址</li>
+<li>直接或者间接的查找到对象对应的在方法区中的类型信息</li>
+</ul>
+</li>
+<li><strong>局部变量定义后不赋初始值是不能使用的</strong></li>
+</ul>
+</li>
+<li><strong>操作数栈</strong><ul>
+<li>最大深度在编译期写在方法表中的Code属性中</li>
+<li><strong><em>在方法执行过程中操作栈深度不会超过上面的最大深度</em></strong></li>
+<li>操作数栈中元素的数据类型必须与字节码指令的序列严格匹配，因为Java字节码指令是面向操作栈的，指令中会限制要操作的数据的类型。</li>
+<li>针对操作栈的优化：两个栈帧出现部分重叠（下面栈帧的部分操作数栈与上面的部分局部变量表重叠），在方法调用的过程中公用一些数据来减少参数的复制。</li>
+</ul>
+</li>
+<li><strong>动态连接</strong><ul>
+<li>每个栈帧（方法，因为一个栈帧代表一个方法）指向<strong>运行时常量池</strong>的引用，也就是所属方法的引用。</li>
+<li><strong><em>动态连接是什么：class文件中的符号引用在每一次的运行期间转换为直接引用称为动态连接</em></strong></li>
+</ul>
+</li>
+<li><strong>方法返回地址</strong><ul>
+<li>方法的两种退出方式<ul>
+<li>正常完成出口：遇到任意方法返回指令，返回给调用者。</li>
+<li>异常完成出口：方法遇到的异常没有匹配到异常处理器（class文件中Code属性中的异常处理表和方法表中的Exceptions属性所罗列的异常），<strong><em>此种方式不会给上层调用者产生任何返回值。</em></strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>虚拟机栈会抛出的异常</strong>：<ul>
+<li>线程请求栈深度大于虚拟机栈允许的最大深度抛出 StackOverflowError异常</li>
+<li>虚拟机栈在动态扩展时无法申请到足够的内存就会抛出 OOMError异常</li>
+</ul>
+</li>
+</ul>
+<h4 id="本地方法栈-–类似栈而服务不同对象"><a href="#本地方法栈-–类似栈而服务不同对象" class="headerlink" title="本地方法栈 –类似栈而服务不同对象"></a><em>本地方法栈 –类似栈而服务不同对象</em></h4><p>虚拟机栈为执行Java方法服务，本地方法栈为执行非Java方法（Native方法）服务。<br>抛出的异常也和虚拟机栈一般。</p>
+<h4 id="Java堆-–所有线程共享的一块区域，在虚拟机启动时创建"><a href="#Java堆-–所有线程共享的一块区域，在虚拟机启动时创建" class="headerlink" title="Java堆 –所有线程共享的一块区域，在虚拟机启动时创建"></a><em>Java堆 –所有线程共享的一块区域，在虚拟机启动时创建</em></h4><ul>
+<li>new即会在堆上分配内存</li>
+<li>唯一目的：存放对象实例。 虚拟机规范中“所有的对象实例和数组都要在堆上分配”。</li>
+<li>垃圾收集器管理的主要区域。</li>
+<li>堆会针对垃圾回收方式的不同来划分不同的区域，但堆存储的内容无影响（即它就为存储实例对象）。在垃圾收集时细说</li>
+<li><strong>Java堆的OOM异常</strong>：堆无法为实例分配内存且堆无法扩展时。<ul>
+<li>分析：此时要确立堆中的对象是否有必要存活<ul>
+<li>内存泄露：躲过GC收集</li>
+<li>内存溢出：也就是说内存中的对象都有活着的必要（垃圾回收时详细列举）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="方法区-–线程共享"><a href="#方法区-–线程共享" class="headerlink" title="方法区 –线程共享"></a><em>方法区 –线程共享</em></h4><ul>
+<li>方法区存储的是已被虚拟机加载的：<ul>
+<li>类信息</li>
+<li>常量</li>
+<li>静态变量（类变量，属于类的变量）</li>
+<li>编译后的代码（Code中的）</li>
+</ul>
+</li>
+<li>内存回收目标主要是针对常量池的回收和对类型的卸载。</li>
+<li><strong>运行时常量池</strong>：用于存放编译器生成的各种字面量和符号引用。<ul>
+<li>除了保存class文件中的符号引用外，还会把翻译出来的直接引用也存储在与运行时常量池中。</li>
+<li>并非存在于class文件中常量池中的数据才能存储在这里</li>
+<li>运行时常量池是方法区的一部分，无法申请到内存时抛出OOM异常。</li>
+</ul>
+</li>
+</ul>
+<h4 id="虚拟机运行数据区之外的内存区域—直接内存"><a href="#虚拟机运行数据区之外的内存区域—直接内存" class="headerlink" title="虚拟机运行数据区之外的内存区域—直接内存"></a><em>虚拟机运行数据区之外的内存区域—直接内存</em></h4><ul>
+<li>堆外内存，通过堆中存储的一个引用对象来间接操作该区域。</li>
+</ul>
+<p>以上就是Java虚拟机使用的内存区域分布，不同的区域完成不同的任务，同时虚拟机就会知道在哪里寻找自己想要的数据，也可以根据不同区域村存储的数据的特点来及进行不同的管理。</p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/18/java容器篇/" rel="next" title="java容器篇">
+                <i class="fa fa-chevron-left"></i> java容器篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/18/shiyan/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -406,6 +593,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -426,8 +627,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -507,6 +717,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地方法栈-–类似栈而服务不同对象"><span class="nav-number">1.</span> <span class="nav-text">本地方法栈 –类似栈而服务不同对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java堆-–所有线程共享的一块区域，在虚拟机启动时创建"><span class="nav-number">2.</span> <span class="nav-text">Java堆 –所有线程共享的一块区域，在虚拟机启动时创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法区-–线程共享"><span class="nav-number">3.</span> <span class="nav-text">方法区 –线程共享</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟机运行数据区之外的内存区域—直接内存"><span class="nav-number">4.</span> <span class="nav-text">虚拟机运行数据区之外的内存区域—直接内存</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -692,6 +918,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -709,6 +939,18 @@
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/10/18/JVM第二步——class文件在虚拟机的目的地/';
+          this.page.identifier = '2018/10/18/JVM第二步——class文件在虚拟机的目的地/';
+          this.page.title = 'JVM————class文件在虚拟机中的目的地';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   

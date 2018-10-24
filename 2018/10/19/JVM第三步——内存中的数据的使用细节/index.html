@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="明日复明日，明日剩不多">
-<meta property="og:type" content="website">
-<meta property="og:title" content="silencewmy blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/09/index.html">
+<meta name="description" content="第二步说到虚拟机的内存布局，那么虚拟机是如何将数据存放进相对应的区域的呢，这其中的过程又是什么呢。Java堆中对象的内存分配、布局和访问。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM——内存中的数据的使用细节">
+<meta property="og:url" content="http://yoursite.com/2018/10/19/JVM第三步——内存中的数据的使用细节/index.html">
 <meta property="og:site_name" content="silencewmy blog">
-<meta property="og:description" content="明日复明日，明日剩不多">
+<meta property="og:description" content="第二步说到虚拟机的内存布局，那么虚拟机是如何将数据存放进相对应的区域的呢，这其中的过程又是什么呢。Java堆中对象的内存分配、布局和访问。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-24T02:16:41.598Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="silencewmy blog">
-<meta name="twitter:description" content="明日复明日，明日剩不多">
+<meta name="twitter:title" content="JVM——内存中的数据的使用细节">
+<meta name="twitter:description" content="第二步说到虚拟机的内存布局，那么虚拟机是如何将数据存放进相对应的区域的呢，这其中的过程又是什么呢。Java堆中对象的内存分配、布局和访问。">
 
 
 
@@ -118,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/09/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/19/JVM第三步——内存中的数据的使用细节/"/>
 
 
 
 
 
-  <title>归档 | silencewmy blog</title>
+  <title>JVM——内存中的数据的使用细节 | silencewmy blog</title>
   
 
 
@@ -143,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     
 <!--此处添加-->
@@ -294,111 +295,273 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 9 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/19/JVM第三步——内存中的数据的使用细节/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="silencewmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencewmy blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/09/07/java-IO使用/" itemprop="url">
-              
-                <span itemprop="name">java IO使用</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">JVM——内存中的数据的使用细节</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-07T12:27:41+08:00"
-              content="2018-09-07" >
-          09-07
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-19T23:38:32+08:00">
+                2018-10-19
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/19/JVM第三步——内存中的数据的使用细节/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/10/19/JVM第三步——内存中的数据的使用细节/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,456
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/05/git命令记录/" itemprop="url">
-              
-                <span itemprop="name">git命令记录</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-05T13:14:32+08:00"
-              content="2018-09-05" >
-          09-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <p>第二步说到虚拟机的内存布局，那么虚拟机是如何将数据存放进相对应的区域的呢，这其中的过程又是什么呢。Java堆中对象的内存分配、布局和访问。  </p>
+<a id="more"></a>
+<p>以Java程序中最多的对象的创建为例子。（其实时书中就是以此为例子^_^）</p>
+<ul>
+<li><strong>确定那一个类</strong><ul>
+<li>遇到new指令后检查该指令的符号常量（是否被加载解析初始化），没有就先进行类的加载过程。</li>
+<li>类加载检查后为其 分配内存（所需大小在类加载阶段完成后就可确定）</li>
+</ul>
+</li>
+<li><strong>如何在堆中为对象划分内存</strong><ul>
+<li>指针碰撞：Java堆内存是规整的，就是将分界指示器（空闲和使用过的）的指针向空闲侧移动。</li>
+<li>空闲列表：内存不规整，维护一个可使用内存块的列表，划分是从列表中寻找一块足够使用的空间并更新空闲列表的记录。</li>
+<li>两种划分方式取决于内存是否规整，而内存的规整取决于GC是否有压缩整理功能。</li>
+</ul>
+</li>
+<li><strong>安全的在堆中为对象划分内存</strong><ul>
+<li>JVM中对象的创建非常频繁导致并发下不是线程安全的（创建过程并非一步到位可以划分为很多步，可以被插队）。如正在为A分配空间，指针还未修改。此时对象B又使用此时的指针来分配内存。</li>
+<li>堆分配空间的动作进行同步处理：CAS家失败重试来保证更新的原子性。一直尝试分配直到分配成功。</li>
+<li>另一种从空间上来断绝修改相同区域的可能，不同线程给予不同的内存，不同线程在自己得到的内存中分配对象，这一块叫做本地线程分配缓冲。在线程共享的区域中分出线程私有的区域来实现线程安全的对象分配。</li>
+</ul>
+</li>
+<li><strong>分配内存后，将内存区域初始化为零值。（实例字段不赋初始值是不能使用的）（不包括对象头）</strong>实例字段是通过对象去引用的。</li>
+<li><strong>虚拟机要对对象进行必要的设置，主要是对象头的设置。对象头如下</strong><ul>
+<li><strong>对象头</strong>主要分为两部分<ul>
+<li><strong>Mark Word运行时数据（告知虚拟机如何来处理使用对象）这是额外开销与对象本身数据无关</strong><ul>
+<li>运行时数据是一个非固定的可复用的数据结构空间，所以可以在小空间存储尽量多的内容。具体有如下</li>
+<li>对象的哈希码：用来判断是否同一个对象，为对象的特征</li>
+<li>GC分代年龄：通过分代年龄，虚拟机才知道如何去管理该片数据区域（后文的年龄限制进入老年区）。</li>
+<li>指向锁的指针：锁优化中的轻量级锁，通过状态的改变来达到资源唯一使用性。</li>
+<li>指向重量级锁的指针</li>
+<li>偏向锁偏向的线程ID</li>
+<li>等等都是方便虚拟机来使用对象，与对象本身所存储的数据无关。</li>
+</ul>
+</li>
+<li><strong>类型指针 -确定对象属于那个类的实例的指向类元数据的指针</strong></li>
+<li>如果是数组对象那么对象头中有记录数组长度的数据，普通Java对象可以在类元数据中确定对象的大小。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>至此在虚拟机看来对象已经生产出来了，只不过所有的变量都是零值不是程序员期望的值（init方法还未执行。），init方法执行后真正可用的对象才生产出来。 </li>
+</ul>
+<p><strong>对象的内存布局 –对象在堆中到底是如何存放的</strong><br>针对虚拟机的不同会有不同，以HotSpot为例。<br>对象在内存中存储的数据主要分为3部分：</p>
+<ul>
+<li><strong>对象头</strong>：在前面虚拟机对对象的设置时有介绍对象头。</li>
+<li><strong>实例数据</strong><ul>
+<li>此部分存储的是真正有效的数据（程序中定义的各种字段内容）</li>
+<li>父类继承，子类定义的都在这里</li>
+<li>相同宽度的字段分配在一起，父类中的变量在子类之前。</li>
+</ul>
+</li>
+<li><strong>对其填充</strong><ul>
+<li>仅仅有占位符的作用，虚拟机自动内存管理系统要求地址必须是8字节的整数倍。</li>
+</ul>
+</li>
+</ul>
+<p><strong>定位对象 –如何来访问堆中的对象</strong>  </p>
+<ul>
+<li>Java程序通过栈上的reference数据来操作堆上的具体对象。reference数据能做到两点<ul>
+<li>通过该引用可以访问该对象在堆中存放数据的起始地址。</li>
+<li>通过该引用g可以对象所属的类的类型信息（在方法区，类加载机制将类加载进方法区中）。</li>
+</ul>
+</li>
+<li>reference只是一个指向对象的引用，并不是如何去定位、访问堆中的对象数据。</li>
+<li>对象的访问方式取决于虚拟机实现，主流方式有如下两种：<ul>
+<li><strong>句柄</strong><ul>
+<li>Java堆中划分中一块区域作为句柄池，reference存储的就是对象的句柄地址。</li>
+<li>句柄存储有：<ul>
+<li>对象的实例数据地址（堆中，对象内存布局中存储有效数据的实例数据）</li>
+<li>类型数据（方法区中）</li>
+</ul>
+</li>
+<li>好处就是reference存储的一直是句柄地址，对象移动时只需改变句柄中的实例地址。</li>
+</ul>
+</li>
+<li><strong>直接指针</strong><ul>
+<li>存储的是对象的直接地址但是需要对象自己存储访问类型数据的地址（方法区中）。</li>
+<li>好处就是速度快，一部到位。少一步指针定位（到句柄）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/18/JVM第四步——class文件如何进入虚拟机/" rel="next" title="JVM——class文件如何进入虚拟机">
+                <i class="fa fa-chevron-left"></i> JVM——class文件如何进入虚拟机
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -406,6 +569,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -692,6 +869,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -709,6 +890,18 @@
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/10/19/JVM第三步——内存中的数据的使用细节/';
+          this.page.identifier = '2018/10/19/JVM第三步——内存中的数据的使用细节/';
+          this.page.title = 'JVM——内存中的数据的使用细节';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
