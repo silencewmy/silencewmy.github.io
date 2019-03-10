@@ -339,7 +339,8 @@ font:
   # Fallback to `global` font settings.
   posts: #文章字体
     external: true
-    family: 华文行楷
+    family:
+    #family: 华文行楷
 
   # Font settings for Logo.
   # Fallback to `global` font settings.
