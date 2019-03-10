@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[未完成]]></title>
-    <url>%2F2019%2F03%2F10%2FjavaEE%2F</url>
-    <content type="text"><![CDATA[javaEE的工程一般包括 dao：dao中的类是操作一张数据库表的所有操作，关于一张表的操作都在一个类中 Javabean：就是封装数据的类 servlet：是前端与后端的交接处，一个servlet代表的是一种数据库表的操作，可以说是一个小功能吧。从前端接收到数据然后在这里实现数据处理的逻辑，如果要使用数据库中的数据，就通过使用那张表对应的dao类中的方法。 util：就提供提供数据库的连接，至于从这个连接中操作什么是dao中定义的方法。 这几个包的分层，让各种方面的逻辑代码实现分离，各种包中的类各司其职。]]></content>
+    <title><![CDATA[JavaIO通信]]></title>
+    <url>%2F2019%2F03%2F10%2FIO%E9%80%9A%E4%BF%A1%E7%AD%89%2F</url>
+    <content type="text"><![CDATA[Java异步阻塞等通信方式介绍 同步与异步：多个任务或者事件发生，其中某个事件的发生会不会导致其他事件的等待，导致整个流程不能继续执行。同步就是必须按照顺序执行，每个事件会对其他事件有影响，所以没有办法并发执行。异步：指这些事件相互之间没有影响，因此可以并发的执行。 阻塞非阻塞：当某个事件在执行过程中，所需要的某个条件没有满足，整个过程停止下来，等待这个条件满足后在往下执行，就是阻塞。而非阻塞就是在条件不满足的情况下，会得到不满足的信号，因此可以让这个执行过程感知到，这样它就可以使用CPU去做不用这个条件的是事。 阻塞IO和非阻塞IO：首先是IO操作：对数据到内存的写入和写出。IO操作的过程是（以读操作为例）：用户线程发起IO请求操作，收到后内核就会查看要读取的消息是否就绪。等到就绪后，内核将数据拷贝到用户线程（内核进行数据拷贝的过程中都会让用户线程阻塞，除了异步IO）。阻塞IO就是在数据没有就绪的时候，一直等待在那里，直到数据拷贝到所在线程。而非阻塞IO就是：在数据没有就绪的时候，内核会返回标志性信息给用户线程数据告知数据没有就绪。因此用户线程可以进行其他调度。。 同步IO和异步IO：同步IO是：一个线程请求IO操作，在该IO操作完成之前，线程会被阻塞。异步IO：IO操作不会导致线程阻塞。造成上述结果是因为要不要使用用户线程。对于同步IO，IO操作如果数据没有就绪，就需要用户线程或者内核不断轮询数据是否就绪，就绪后内核将数据拷贝到用户线程。对于异步IO来说：只有请求IO操作是由用户线程完成，轮询信息状态和拷贝数据都是有内核来完成。不会使用用户线程。因此异步IO必须要有操作系统的底层支持（内核来完成一些事情）。 五种IO模型：阻塞IO：读写数据过程中会发生阻塞现象。数据没有就绪，用户线程会阻塞交出CPU，直到数据背靠背到用户线程。 非阻塞IO：发起IO请求后会立刻得到结果，来分辨数据有无准备好。想要获得数据就需要用户线程轮询是否就绪。 多路复用IO：Java NIO就是使用的多路复用。通过一个线程来轮询所有的状态是否就绪。就绪后才开始需要这个数据的用户线程的真正的IO操作。这样只会使用一个线程的资源。轮询状态是由内核来完成的。通过轮询来检查状态的满足情况，因此，大范围满足时，导致后面事件不能及时处理。 信号驱动IO：用户发起IO请求后留下信号函数（可以理解为联系方式：其中有实际的后续的IO操作），用户线程就会离开做其他的事，数据就绪后内核通知用户线程，收到信号后，用户线程调用信号函数中的后续的IO操作函数（需要用到用户线程）。 异步IO：用户线程发起IO请求后就去做其他的事情。整个IO由内核来完成，收到请求后，立刻返回说”收到任务“，然后等待数据就绪，再将数据拷贝到用户线程。这两步做完后，内核告知用户线程IO操作完成了，数据可以直接使用了。 Reactor和Proactor模式 Reactor模式:将所有要监管的对象（统称做对象，Java 万物皆对象）进行所关注的事件进行分类，改为每类轮询自己这一类事件的对象。 Proactor模式:将IO操作交由内核来完成。检测到事件发生时，交由内核来处理，内核处理完后告知操作完成。 接下来说 Java NIO：Java NIO是面向缓冲区的。数据的读或者写都要经过缓冲区(因为缓冲区的读写是可以立刻执行完的，因此不需要等待)，使用一个线程（叫做选择器）来在多个需要IO操作的不同对象间选择哪些可以立马从缓冲区处理数据的对象。 学习自海子的博客：https://www.cnblogs.com/dolphin0520/p/3916526.html 平凡希：https://www.cnblogs.com/xiaoxi/p/6576588.html Geason崔:https://www.cnblogs.com/geason/p/5774096.html]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>Java web</tag>
+        <tag>Java IO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[微服务简单介绍]]></title>
+    <url>%2F2019%2F03%2F10%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%2F</url>
+    <content type="text"><![CDATA[微服务 SOA Docker为微服务框架提供有效的容器。 单体架构好处是便于管理，所有业务代码均在一个项目中，争用一个相同的内存和CPU。单体架构的缺点： 项目过于臃肿：因为多个功能业务模块都在一个项目中 资源无法隔离：单体系统中的各个功能模块都依赖于相同的数据库与内存资源，某个功能模块对资源的使用有问题，整个系统可能会被拖垮（等待该资源的可用）。耦合度较高。 无法灵活扩展：访问量增大需要扩展时，单体架构只能进行水平扩展，也就是说扩展项目中的所有功能模块，不能有针对性的扩展某一功能部分。 解决这些问题是将单体架构系统拆分成微服务微服务是什么：个人理解就是相互独立的功能模块自成为独立的项目进行部署，该项目中只有该功能的逻辑代码，对外提供可供其他模块使用的接口，只专注于自己的功能逻辑，拥有自己的专有的数据库，进行了资源的隔离。比较专业化的说明如下简而言之，微服务架构风格是一种将单个应用程序作为一套小型服务开发的方法，每种应用程序都在自己的进程中运行，并与轻量级机制（通常是HTTP资源API）进行通信。 这些服务是围绕业务功能构建的，可以通过全自动部署机制独立部署。 这些服务的集中管理最少，可以用不同的编程语言编写，并使用不同的数据存储技术。 微服务的特点如下： 独立部署，灵活扩展：微服务中的独立单位是单体架构中的单一的功能模块。这样可以有针对性的扩展某一个功能，当只有该功能遇到瓶颈。 资源的有效隔离：每一个微服务拥有独立的数据源，如果想要使用另外服务的数据库，只能调用该服务对外的接口通过该服务来获得数据。每一个微服务实例在Docker容器中运行。实现服务器资源的隔离。 团队组织架构从水平结构分成垂直架构。 微服务与面向服务架构的SOA的区别SOA架构是一种粗粒度，松耦合的服务架构。SOA强调的是异构系统之间的服务通信。是异构系统之间的通信和解耦和，屏蔽异构系统的差异，让系统可以在不同实现的机器之间能够无差错的通信。而微服务强调的是系统按照业务边界（功能之间互不影响，没有强依赖）做细粒度的拆分和部署。 可以说Dubbo很好的支持了SOA架构，Spring Cloud很好的支持了微服务架构。 有优点就有缺点，微服务的优点就会导致缺点：将原本的一个项目拆分成多个项目，增加了开发和测试的复杂度。微服务架构需要保证不同服务之间的数据一致性，因为要将按照服务拆分后的多个项目模拟成为单体架构的一个项目的运行（分布式可以说是使用多个机器来模拟出在使用一台机器，就是感觉上是在使用一台性能强悍机器） 学习文章为：[https://www.sohu.com/a/221400925_100039689]]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>微服务</tag>
       </tags>
   </entry>
   <entry>
@@ -20,6 +31,52 @@
       </categories>
       <tags>
         <tag>应用架构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[小白的SSM框架使用]]></title>
+    <url>%2F2019%2F03%2F10%2F%E5%B0%8F%E7%99%BD%E7%9A%84SSM%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[新手使用SSM的配置和个人对SSM框架的简单理解 本文仅仅适用于被整合SSM框架搞糊涂的小白。本文单纯的告诉你怎么配置使的这三个框架结合起来。其中并没有说明每个框架怎么用。文中尽量不掺杂在开发过程中是选择注解还是XML方式的不同。因为笔者也是小白。。。 ##我们按照两个不同的顺序来介绍使用，这样可能不太会让你混乱。 ###我们先是从整体到局部首先我们要明确的是： springMVC的工作：根据不同请求调用不同的功能是springMVC完成的，是springMVC将我们的功能代码进行分离。接收前端送来的请求，调用相应的处理逻辑来处理请求，最后将结果封装（保存）到模型中传递给前端视图来展示数据。如果是你来根据不同的人来做不同的事情你肯定会：看到来了一个人-&gt;奥，是他啊-&gt;那我就怎么怎么样。springMVC也是这样来完成。 spring的工作：这里就是让你能接受spring基本功能之一的springIOC，说白了就是我们把自己有的所有的类都告诉它，然后通过spring来获取这些类的对象（这时候你有一点困惑，如果一个类需要参数也就是他需要依赖一些辅助才能完成本类的正常使用要怎么办，后面再说）。我们有了springMVC就可以完成功能逻辑的分离，想想我们的代码组成中，可以说每个类都有它的功能，我们提前编写好它，当我们用到这个功能的时候，我们就创建该类的一个对象来使用它。这种就是：我知道你有这个功能，你这个功能我要用，那我就来创建一个来使用。当通一个功能被多处使用的时候，要修改另一个类的相差无几的功能的时候，想想要怎么做，你要一个个的去修改。而spring就是帮助我们管理这些功能模块，spring中统一管理的资源（这些功能类）叫做bean。想想我们经常写的登录和注册，通过一个id来登录，发现注册表中没有这个id，就没有结果需要去注册。而找到这个id，后就返回它所需的东西，但肯定这个id是提前注册的。spring就类似这个功能。你需要往这个容器中添加东西（bean），别人通过id向容器索要该资源。你告诉容器：我要用这个类提供的功能。那么容器就会返回给你该类的一个对象，不再是你通过new来创建一个对象（当然对象肯定是要创建的，只不过不在是使用者来创建而是IOC容器来创建），这就叫做控制反转。 mybatis:这是用来操作数据库，提供sql语句，获得返回的结果。它就是连接数据库，因为对数据库的连接、操作都简单，因此通过mybatis来连接数据库。 最简单的SSM使用就是：springMVC根据前端请求来调用相对应的功能类，spring管理整个工程中的各种功能类，提供给使用者。mybatis就是执行sql语句来获得数据（将数据封装起来）供逻辑代码使用。 项目目录，后面的各种扫描的包的路径就是根据下面的目录—-本人用的IDEA12345678910111213141516171819202122232425项目名 | -.idea | -out | -resources -DB.properties -mybatis-config.xml -spring-mybatis.xml -springmvc-config.xml | -src -main -aspect -contorller -dao -POJO -service | -web -WEB-INF -css -images -jsp 以下就是将三个框架整合起来的关键性配置语句： web.xml:1234567891011121314151617181920212223242526272829303132333435363738394041424344454647&lt;!-- 第一部分是整合spring相关的 --&gt;&lt;!-- 这是spring配置文件的路径 --&gt;&lt;context-param&gt; &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt; &lt;param-value&gt;classpath:spring-mybatis.xml&lt;/param-value&gt;&lt;/context-parm&gt;&lt;!-- 初始化SpringIOC是一个比较耗时的操作，而其中又是工程中要用到的所有资源的容器，因此要在使用前准备好，可以在ContextLoaderListener中实现在DispatcherServlet初始化前初始化。ContextLoaderListener是ServletContextListener的一个实现类，后者与Javaweb生命周期有关。 --&gt;&lt;listener&gt; &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;&lt;/listener&gt;&lt;!-- 第二部分是整合SpringMVC的，配置要拦截那些东西 --&gt;&lt;!-- DispatcherServlet的定义处，DispatcherServlet本身就是一个servlet,DispatcherServlet是来初始化请求上下文的，就是根据请求转到处理器中 --&gt;&lt;servlet&gt; &lt;servlet-name&gt;springmvc-config&lt;/servlet-name&gt; &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt; &lt;!-- 这里是告知SpringMVC配置文件的地址 --&gt; &lt;init-param&gt; &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt; &lt;param-valer&gt;classpath:springmvc-config.xml&lt;/param-valer&gt; &lt;/init-param&gt; &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;&lt;/servlet&gt; &lt;!-- 这里是定义servlet拦截哪些请求，通过servlet-name来对应，这里是拦截所有的特别说一下，如果url-pattern配置的是 *.do 。 你可以理解为是一个正则，就是它只会拦截哪些请求中是以.do结尾的请求 --&gt;&lt;servlet-mapping&gt; &lt;servlet-name&gt;springmvc-config&lt;/servlet-name&gt; &lt;url-pattern&gt;/&lt;/url-pattern&gt;&lt;/servlet-mapping&gt; springMVC配置:springmvc-config.xml123456789101112131415161718192021&lt;!-- 这里表明使用注解驱动 --&gt;&lt;mvc:annotation-drivern /&gt;&lt;!-- 配置要扫描成controller的包 --&gt;&lt;context:component-scan base-package="main.controller"&gt;&lt;!-- 配置静态资源的访问映射，下面配置中的文件将不再被前端拦截 --&gt;&lt;mvc:resources location="/WEB-INF/js/" mapping="/js/**" /&gt;&lt;mvc:resources location="/WEB-INF/css/" mapping="/css/**" /&gt;&lt;mvc:resources location="/WEB-INF/images/" mapping="/images/**" /&gt;&lt;!-- 这里是配置视图解析器，根据返回的模型来渲染到的视图的对应关系 --&gt;&lt;bean class="org.springframe.web.servelet.view.InternalResourceViewResolver"&gt; &lt;property name="prefix" value="/WEB-INF/jsp/" /&gt; &lt;property name="suffix" value=".jsp" /&gt; &lt;!-- 上面两个属性，你配置的 prefix+你模型中给的名字+suffix 就是选择的将要渲染的视图。 --&gt;&lt;/bean&gt; spring的配置：spring-mybatis.xml 不过一般是applicationContext.xml这个名字。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546&lt;!-- 告知配置文件在哪里 --&gt;&lt;context:property-placeholder location="classpath:DB.properties" /&gt;&lt;!-- 数据库连接池，数据源配置 --&gt;&lt;bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"&gt; &lt;property name="driverClassName" value="$&#123;jdbc.driver&#125;" /&gt; &lt;property name="url" value="$&#123;jdbc.url&#125;"/&gt; &lt;property name="username" value="$&#123;jdbc.username&#125;"/&gt; &lt;property name="password" value="$&#123;jdbc.password&#125;"/&gt;&lt;/bean&gt;&lt;!-- 集成mybatis，这里是配置mybatis关键的SQLSessionFactory --&gt;&lt;bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"&gt; &lt;property name="dataSource" ref="datasource" /&gt; &lt;!-- 下面是告知mybatis的配置文件在哪里 --&gt; &lt;property name="configLocation" value="classpath:mybatis-config.xml"&gt;&lt;/bean&gt;&lt;!-- spring针对mybatis的提供事务功能的模板，也就是DataSourceTransactionManager配饰事务管理器，配置的属性只有数据源 --&gt;&lt;bean id="transactionManager" class="org.springframe.jdbc.datasource.DataSourceTransactionManager"&gt; &lt;property name="dataSource" ref="dataSource"&gt;&lt;/bean&gt;&lt;!-- 使用注解定义事务 也就是@Transcctional--&gt;&lt;tx:annotation-driven transaction-manager="transactionManager" /&gt;&lt;!-- 配置成自动扫描dao，也就是mybatis中的mapper。 --&gt;&lt;bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"&gt; &lt;!-- 告知springIOC在哪个包中扫描dao层类 --&gt; &lt;property name="basePackage" value="main.dao" /&gt; &lt;!-- 注入用于生成session的mybatis中关键的sqlSessionFactory --&gt; &lt;property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" /&gt; &lt;!-- 下面这条的属性叫做注解类，表示某个类只有被value中指定的注解标识后才会被扫描成 Mapper，Spring中使用的是@Repository，也就是说只要被@Repository标识后它就是一个dao层。 --&gt; &lt;property name="annotationClass" value="org.springframework.stereotype.Repository"&gt; &lt;!-- spring自动扫描的包，这个包是扫描service层 --&gt; &lt;context:component-scan base-package="main.service"/&gt; &lt;!-- XML方式启用AspectJ自动代理 --&gt; &lt;aop:aspectj-autoproxy/&gt;&lt;/bean&gt; mybatis配置12345678&lt;configuration&gt; &lt;!-- 设置别名，使用别名来代替复杂的完整类名，下面的是配置将这个包下的类名首 字母小写来作为springIOC中的bean的id --&gt; &lt;typeAliases&gt; &lt;package name="main.POJO"&gt; &lt;/typeAliases&gt;&lt;/configuration&gt; 经过上述的配置就可以将三个框架结合起来。]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>SSM框架</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[大型网站的架构演进]]></title>
+    <url>%2F2019%2F03%2F10%2F%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E7%9A%84%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%2F</url>
+    <content type="text"><![CDATA[网站如何由小变大 网站从小型的单机架构遇到瓶颈一步步升级为大型的分布式架构。 大型网站的定义：访问量和数据量，海量的数据加上非常高的并发访问量。 Java+单机 数据库和网站项目部署在同一个机器上。各个功能模块之间通过JVM内部的方法调用进行交互，他们都在同一个进程中。 访问量的增大，单机的响应变慢，单机负载较大。 –数据库和应用分离 应用服务器+数据库服务器 访问量增大，应用服务器负载告警 应用服务器的压力增大，可有针对性的进行优化。一种为 将应用从单机到集群而将一台机器变为多台机器，对于系统中要解决的问题有如下两个： 用户对多台应用服务器访问的选择问题。————-DNS或者负载均衡设备。 session问题。 什么是session（会话）？纯属个人理解！！！ 产生：使用网络服务的浏览器和服务器之间的多次交互。基于HTTP支持会话状态的机制使得web服务器可以在多次单独的请求中看到会话。如何区分请求所属于的会话（多个客户端进行服务请求）。在会话开始时服务器会分配唯一的会话标识，并通过cookie告知客户端。在客户端，要求每次进行请求需要带上会话标识。在服务器上每个会话都有独立的存储，保存不同的数据。 session问题就是当服务器由一台增加为多台时，如何保证能够找到请求所属的会话存储的数据。解决方式如下几种： session sticky：在负载均衡处做处理，根据请求所带的标识进行请求转发。这种方式和只有一台时一样，服务器只需要根据到来的请求进行处理，因为这些请求的会话数据一定在本地。一个请求对应一个服务器。缺点是当其中一台服务器出问题宕机，则该服务器上的所有的会话数据会丢失。同时在负载均衡设备上进行处理势必会造成负载的内存消耗增加。 session replication：多个服务器进行会话数据的同步。这样就能实现一条请求对应多个服务器，可以进行路由的择优选择。缺点是会造成网络带宽开销。并且每个服务器都要备份应用中全部的会话数据。 session集中存储：session数据不在服务器本地存储，而是集中存储，每个服务器根据标识或者某种算法在集中池中获得数据。 cookie Based：将session数据存储在客户端本地。通过cookie传递session数据，服务器从cookie中生成会话数据。 总结：对于大型网站来说，session集中存储和session sticky是比较好的方案。 数据读压力变大，数据读写分离 数据量访问量增加，业务大部分都读多写少。此时增加一个数据读库（读库不一定是数据库也可以是能提供读数据的各种读源）只提供读服务。面临两个问题 数据的复制（从读写库到读库）：使用数据库的复制，存在复制时延期间数据短期不一致。可以看到数据库对此的支持是有限的。因此推荐使用分布式数据访问层。 数据源的选择问题。增加的是读源，所以解决的是向读源复制数据。应用根据不同情况选择不同的数据源。写操作走主库，事务中的读操作要走主库 读源 搜索引擎： 大型网站的站内搜索功能，就是一个读库。搜索引擎的倒排表方式很大程度提高检索速度。要根据被搜索数据建立索引， 缓存 cache 加速数据库读取 分布式存储系统 数据库之外的用于存储——弥补关系型数据库的不足更多的是直接代替主库。常见的分布式存储系统有 分布式文件系统：小文件和大文件的存储问题 分布式key-value系统：高性能板结构化支持 分布式数据库：大数据和高并发的数据库系统 读写分离后又遇到瓶颈的数据库——所有数据都一个主库中造成压力瓶颈 解决方式为垂直拆分和水平拆分两种选择 垂直拆分 将数据按照业务进行划分，划分结果为同一个数据库中的数据按照业务分成了多个数据库，每个数据库有自己的连接池，并且会导致数据库事务复杂化为业务事务。解决方式为 使用分布式事务，或者去掉事务或不去追求强事务。 数据量巨大垂直拆分后又会造成瓶颈，将数据水平拆分 水平拆分就是将同一个表中的数据拆分到不同的数据库中（数量可多个） 造成水平拆分的原因是，某个业务的数据量达到单个数据库的瓶颈 水平拆分后需要解决 需要SQL路由 主键的处理不同（自增主键不可用） ####当数据库的问题解决后应用会面对问题####伴随着业务发展，应用功能会会越来越多，应用变大需考虑如何不让应用持续变大，也就是在同一个JVM进程中，所有的应用功能线程争抢同一个线程中的资源（重要的是CPU时间），代码量巨大，因此检查代码也是一个问题。解决办法如下 根据业务特性进行应用拆分例如将不同的功能进行拆分，这要求拆分后的应用之间不存在直接调用（数据如何传递）。被拆分后不同应用系统之间会存在相似的功能性代码，这就有了代码的一致和复用的问题拆分后可能连接相同的数据库。 另一种是走服务化的路线，将应用拆分成3层 web系统 来完成不同的业务功能 服务中心 提供不同的业务服务 数据库 业务的数据库服务化应用后共享的代码放在了服务中心；与数据库的交互放到了服务中心（直接降低数据库的连接数，因为由服务中心来进行数据请求）同时引入了远程的服务调用]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>中间件</tag>
+        <tag>架构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java项目中的classpath指的是哪里]]></title>
+    <url>%2F2019%2F03%2F10%2FJava%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84classpath%E6%8C%87%E7%9A%84%E6%98%AF%E5%93%AA%E9%87%8C%2F</url>
+    <content type="text"><![CDATA[只提供一个网页链接,哈哈。。当时找了很多文章，后来看到这个最后解惑。 不仅仅是说说而已 的博客]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[单机到分布式的变化]]></title>
+    <url>%2F2019%2F03%2F10%2F%E5%8D%95%E6%9C%BA%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E6%94%B9%E5%8F%98%2F</url>
+    <content type="text"><![CDATA[单机与分布式的区别 分布式系统的意义：组件分布在网络计算机上，组件之间仅通过消息传递来通信兵协调工作。 多进程模式：多个进程之间的内存空间是相互独立的，多进程共享数据设计到序列化和反序列化。 组成计算机的5个要素：输入设备、输出设备、运算器、控制器、存储器。将应用从单机扩展到分布式： 要素 分布式 单机 输入设备 接受其它节点信息的节点 传统的人机交互设备 输出设备 向其它节点传递消息时的节点 传统人机交互设备 控制器变化 在分布式中改为控制方式，作用为：协调或者控制节点之间的动作和行为，换句话说就是决定由谁来处理请求 单机中的控制器 运算器变化 有多个节点来组成，构成运算器的多个节点在控制器的配合下对外提供服务 单机的运算器 存储器的变化 分布式中的存储需要控制器配合使用 单机中的存储器 控制器的变化补充： 如何实现节点间的配对 硬件负载均衡：系统中的所有请求都要经过该应硬件设备，硬件负载将数据分流转发，类似于路由器的转发。 软件负载：LVS透明代理。服务的消费者和生产者只需要知道中间代理的地址就可以进行节点间的服务的使用。通过LVS透明代理，让请求方认为是中间代理完成了请求的处理。让处理方认为是中间代理进行的请求。所以请求方与处理方不需要知道彼此的地址就可以进行交流。 软件负载具有如下的缺点： 在请求的必经之路上增加了网络的开销。 因为是请求方与处理方彼此透明，通过中间代理进行交流。中间的代理就是枢纽，作用无可代替，因此需要保证无差错的运行。 使用名称服务器的直连来发现相对的节点：地址交换的作用类似于DNS服务器的发现方式。请求方将需要的服务发送给名称服务器，服务器将提供该服务的所有的服务器地址发送给请求方。 采用规则服务器发送控制路由的直连调用：方式与名称服务器类似，不同在于在接受到服务请求后，规则服务器将选择处理器的规则发送给请求方。 看到一个推荐，虽然不太明白。更多运用在有状态的场景中，例如数据或者缓存。猜测可能是根据不同的请求内容有不同的规则来进行分等级处理或者什么分区域。 任务的分配和管理：分为两个角色 master：管理任务，由master将任务分配给不同的worker进行处理 worker：任务处理。 分布式系统的难点： 缺乏全局时钟，解决为关注动作的相对次序，不在根据准确的时间。 故障独立性：指的是整个系统中的一部分存在故障问题，而其他设备正常。 单点故障：单点的定义为（某个角色或者某个功能只有一台机器在支撑）。解决方式为： 给单点做好备份，尽量降低自动恢复的时间 降低故障的影响范围 事务处理]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>中间件</tag>
+        <tag>架构</tag>
       </tags>
   </entry>
   <entry>
@@ -45,14 +102,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Java项目中的classpath指的是哪里]]></title>
-    <url>%2F2019%2F03%2F10%2FJava%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84classpath%E6%8C%87%E7%9A%84%E6%98%AF%E5%93%AA%E9%87%8C%2F</url>
-    <content type="text"><![CDATA[只提供一个网页链接,哈哈。。当时找了很多文章，后来看到这个最后解惑。 不仅仅是说说而已 的博客]]></content>
+    <title><![CDATA[未完成]]></title>
+    <url>%2F2019%2F03%2F10%2FjavaEE%2F</url>
+    <content type="text"><![CDATA[javaEE的工程一般包括 dao：dao中的类是操作一张数据库表的所有操作，关于一张表的操作都在一个类中 Javabean：就是封装数据的类 servlet：是前端与后端的交接处，一个servlet代表的是一种数据库表的操作，可以说是一个小功能吧。从前端接收到数据然后在这里实现数据处理的逻辑，如果要使用数据库中的数据，就通过使用那张表对应的dao类中的方法。 util：就提供提供数据库的连接，至于从这个连接中操作什么是dao中定义的方法。 这几个包的分层，让各种方面的逻辑代码实现分离，各种包中的类各司其职。]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>Java</tag>
+        <tag>Java web</tag>
       </tags>
   </entry>
   <entry>
@@ -67,28 +124,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[微服务简单介绍]]></title>
-    <url>%2F2019%2F03%2F10%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%2F</url>
-    <content type="text"><![CDATA[微服务 SOA Docker为微服务框架提供有效的容器。 单体架构好处是便于管理，所有业务代码均在一个项目中，争用一个相同的内存和CPU。单体架构的缺点： 项目过于臃肿：因为多个功能业务模块都在一个项目中 资源无法隔离：单体系统中的各个功能模块都依赖于相同的数据库与内存资源，某个功能模块对资源的使用有问题，整个系统可能会被拖垮（等待该资源的可用）。耦合度较高。 无法灵活扩展：访问量增大需要扩展时，单体架构只能进行水平扩展，也就是说扩展项目中的所有功能模块，不能有针对性的扩展某一功能部分。 解决这些问题是将单体架构系统拆分成微服务微服务是什么：个人理解就是相互独立的功能模块自成为独立的项目进行部署，该项目中只有该功能的逻辑代码，对外提供可供其他模块使用的接口，只专注于自己的功能逻辑，拥有自己的专有的数据库，进行了资源的隔离。比较专业化的说明如下简而言之，微服务架构风格是一种将单个应用程序作为一套小型服务开发的方法，每种应用程序都在自己的进程中运行，并与轻量级机制（通常是HTTP资源API）进行通信。 这些服务是围绕业务功能构建的，可以通过全自动部署机制独立部署。 这些服务的集中管理最少，可以用不同的编程语言编写，并使用不同的数据存储技术。 微服务的特点如下： 独立部署，灵活扩展：微服务中的独立单位是单体架构中的单一的功能模块。这样可以有针对性的扩展某一个功能，当只有该功能遇到瓶颈。 资源的有效隔离：每一个微服务拥有独立的数据源，如果想要使用另外服务的数据库，只能调用该服务对外的接口通过该服务来获得数据。每一个微服务实例在Docker容器中运行。实现服务器资源的隔离。 团队组织架构从水平结构分成垂直架构。 微服务与面向服务架构的SOA的区别SOA架构是一种粗粒度，松耦合的服务架构。SOA强调的是异构系统之间的服务通信。是异构系统之间的通信和解耦和，屏蔽异构系统的差异，让系统可以在不同实现的机器之间能够无差错的通信。而微服务强调的是系统按照业务边界（功能之间互不影响，没有强依赖）做细粒度的拆分和部署。 可以说Dubbo很好的支持了SOA架构，Spring Cloud很好的支持了微服务架构。 有优点就有缺点，微服务的优点就会导致缺点：将原本的一个项目拆分成多个项目，增加了开发和测试的复杂度。微服务架构需要保证不同服务之间的数据一致性，因为要将按照服务拆分后的多个项目模拟成为单体架构的一个项目的运行（分布式可以说是使用多个机器来模拟出在使用一台机器，就是感觉上是在使用一台性能强悍机器） 学习文章为：[https://www.sohu.com/a/221400925_100039689]]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>微服务</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[小白的SSM框架使用]]></title>
-    <url>%2F2019%2F03%2F10%2F%E5%B0%8F%E7%99%BD%E7%9A%84SSM%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[新手使用SSM的配置和个人对SSM框架的简单理解 本文仅仅适用于被整合SSM框架搞糊涂的小白。本文单纯的告诉你怎么配置使的这三个框架结合起来。其中并没有说明每个框架怎么用。文中尽量不掺杂在开发过程中是选择注解还是XML方式的不同。因为笔者也是小白。。。 ##我们按照两个不同的顺序来介绍使用，这样可能不太会让你混乱。 ###我们先是从整体到局部首先我们要明确的是： springMVC的工作：根据不同请求调用不同的功能是springMVC完成的，是springMVC将我们的功能代码进行分离。接收前端送来的请求，调用相应的处理逻辑来处理请求，最后将结果封装（保存）到模型中传递给前端视图来展示数据。如果是你来根据不同的人来做不同的事情你肯定会：看到来了一个人-&gt;奥，是他啊-&gt;那我就怎么怎么样。springMVC也是这样来完成。 spring的工作：这里就是让你能接受spring基本功能之一的springIOC，说白了就是我们把自己有的所有的类都告诉它，然后通过spring来获取这些类的对象（这时候你有一点困惑，如果一个类需要参数也就是他需要依赖一些辅助才能完成本类的正常使用要怎么办，后面再说）。我们有了springMVC就可以完成功能逻辑的分离，想想我们的代码组成中，可以说每个类都有它的功能，我们提前编写好它，当我们用到这个功能的时候，我们就创建该类的一个对象来使用它。这种就是：我知道你有这个功能，你这个功能我要用，那我就来创建一个来使用。当通一个功能被多处使用的时候，要修改另一个类的相差无几的功能的时候，想想要怎么做，你要一个个的去修改。而spring就是帮助我们管理这些功能模块，spring中统一管理的资源（这些功能类）叫做bean。想想我们经常写的登录和注册，通过一个id来登录，发现注册表中没有这个id，就没有结果需要去注册。而找到这个id，后就返回它所需的东西，但肯定这个id是提前注册的。spring就类似这个功能。你需要往这个容器中添加东西（bean），别人通过id向容器索要该资源。你告诉容器：我要用这个类提供的功能。那么容器就会返回给你该类的一个对象，不再是你通过new来创建一个对象（当然对象肯定是要创建的，只不过不在是使用者来创建而是IOC容器来创建），这就叫做控制反转。 mybatis:这是用来操作数据库，提供sql语句，获得返回的结果。它就是连接数据库，因为对数据库的连接、操作都简单，因此通过mybatis来连接数据库。 最简单的SSM使用就是：springMVC根据前端请求来调用相对应的功能类，spring管理整个工程中的各种功能类，提供给使用者。mybatis就是执行sql语句来获得数据（将数据封装起来）供逻辑代码使用。 项目目录，后面的各种扫描的包的路径就是根据下面的目录—-本人用的IDEA12345678910111213141516171819202122232425项目名 | -.idea | -out | -resources -DB.properties -mybatis-config.xml -spring-mybatis.xml -springmvc-config.xml | -src -main -aspect -contorller -dao -POJO -service | -web -WEB-INF -css -images -jsp 以下就是将三个框架整合起来的关键性配置语句： web.xml:1234567891011121314151617181920212223242526272829303132333435363738394041424344454647&lt;!-- 第一部分是整合spring相关的 --&gt;&lt;!-- 这是spring配置文件的路径 --&gt;&lt;context-param&gt; &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt; &lt;param-value&gt;classpath:spring-mybatis.xml&lt;/param-value&gt;&lt;/context-parm&gt;&lt;!-- 初始化SpringIOC是一个比较耗时的操作，而其中又是工程中要用到的所有资源的容器，因此要在使用前准备好，可以在ContextLoaderListener中实现在DispatcherServlet初始化前初始化。ContextLoaderListener是ServletContextListener的一个实现类，后者与Javaweb生命周期有关。 --&gt;&lt;listener&gt; &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;&lt;/listener&gt;&lt;!-- 第二部分是整合SpringMVC的，配置要拦截那些东西 --&gt;&lt;!-- DispatcherServlet的定义处，DispatcherServlet本身就是一个servlet,DispatcherServlet是来初始化请求上下文的，就是根据请求转到处理器中 --&gt;&lt;servlet&gt; &lt;servlet-name&gt;springmvc-config&lt;/servlet-name&gt; &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt; &lt;!-- 这里是告知SpringMVC配置文件的地址 --&gt; &lt;init-param&gt; &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt; &lt;param-valer&gt;classpath:springmvc-config.xml&lt;/param-valer&gt; &lt;/init-param&gt; &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;&lt;/servlet&gt; &lt;!-- 这里是定义servlet拦截哪些请求，通过servlet-name来对应，这里是拦截所有的特别说一下，如果url-pattern配置的是 *.do 。 你可以理解为是一个正则，就是它只会拦截哪些请求中是以.do结尾的请求 --&gt;&lt;servlet-mapping&gt; &lt;servlet-name&gt;springmvc-config&lt;/servlet-name&gt; &lt;url-pattern&gt;/&lt;/url-pattern&gt;&lt;/servlet-mapping&gt; springMVC配置:springmvc-config.xml123456789101112131415161718192021&lt;!-- 这里表明使用注解驱动 --&gt;&lt;mvc:annotation-drivern /&gt;&lt;!-- 配置要扫描成controller的包 --&gt;&lt;context:component-scan base-package="main.controller"&gt;&lt;!-- 配置静态资源的访问映射，下面配置中的文件将不再被前端拦截 --&gt;&lt;mvc:resources location="/WEB-INF/js/" mapping="/js/**" /&gt;&lt;mvc:resources location="/WEB-INF/css/" mapping="/css/**" /&gt;&lt;mvc:resources location="/WEB-INF/images/" mapping="/images/**" /&gt;&lt;!-- 这里是配置视图解析器，根据返回的模型来渲染到的视图的对应关系 --&gt;&lt;bean class="org.springframe.web.servelet.view.InternalResourceViewResolver"&gt; &lt;property name="prefix" value="/WEB-INF/jsp/" /&gt; &lt;property name="suffix" value=".jsp" /&gt; &lt;!-- 上面两个属性，你配置的 prefix+你模型中给的名字+suffix 就是选择的将要渲染的视图。 --&gt;&lt;/bean&gt; spring的配置：spring-mybatis.xml 不过一般是applicationContext.xml这个名字。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546&lt;!-- 告知配置文件在哪里 --&gt;&lt;context:property-placeholder location="classpath:DB.properties" /&gt;&lt;!-- 数据库连接池，数据源配置 --&gt;&lt;bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"&gt; &lt;property name="driverClassName" value="$&#123;jdbc.driver&#125;" /&gt; &lt;property name="url" value="$&#123;jdbc.url&#125;"/&gt; &lt;property name="username" value="$&#123;jdbc.username&#125;"/&gt; &lt;property name="password" value="$&#123;jdbc.password&#125;"/&gt;&lt;/bean&gt;&lt;!-- 集成mybatis，这里是配置mybatis关键的SQLSessionFactory --&gt;&lt;bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"&gt; &lt;property name="dataSource" ref="datasource" /&gt; &lt;!-- 下面是告知mybatis的配置文件在哪里 --&gt; &lt;property name="configLocation" value="classpath:mybatis-config.xml"&gt;&lt;/bean&gt;&lt;!-- spring针对mybatis的提供事务功能的模板，也就是DataSourceTransactionManager配饰事务管理器，配置的属性只有数据源 --&gt;&lt;bean id="transactionManager" class="org.springframe.jdbc.datasource.DataSourceTransactionManager"&gt; &lt;property name="dataSource" ref="dataSource"&gt;&lt;/bean&gt;&lt;!-- 使用注解定义事务 也就是@Transcctional--&gt;&lt;tx:annotation-driven transaction-manager="transactionManager" /&gt;&lt;!-- 配置成自动扫描dao，也就是mybatis中的mapper。 --&gt;&lt;bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"&gt; &lt;!-- 告知springIOC在哪个包中扫描dao层类 --&gt; &lt;property name="basePackage" value="main.dao" /&gt; &lt;!-- 注入用于生成session的mybatis中关键的sqlSessionFactory --&gt; &lt;property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" /&gt; &lt;!-- 下面这条的属性叫做注解类，表示某个类只有被value中指定的注解标识后才会被扫描成 Mapper，Spring中使用的是@Repository，也就是说只要被@Repository标识后它就是一个dao层。 --&gt; &lt;property name="annotationClass" value="org.springframework.stereotype.Repository"&gt; &lt;!-- spring自动扫描的包，这个包是扫描service层 --&gt; &lt;context:component-scan base-package="main.service"/&gt; &lt;!-- XML方式启用AspectJ自动代理 --&gt; &lt;aop:aspectj-autoproxy/&gt;&lt;/bean&gt; mybatis配置12345678&lt;configuration&gt; &lt;!-- 设置别名，使用别名来代替复杂的完整类名，下面的是配置将这个包下的类名首 字母小写来作为springIOC中的bean的id --&gt; &lt;typeAliases&gt; &lt;package name="main.POJO"&gt; &lt;/typeAliases&gt;&lt;/configuration&gt; 经过上述的配置就可以将三个框架结合起来。]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>SSM框架</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[springbootweb开发]]></title>
     <url>%2F2019%2F03%2F10%2Fspringbootweb%E5%BC%80%E5%8F%91%E4%B9%8BThymeleaf%2F</url>
     <content type="text"><![CDATA[jsp和Thymeleafweb开发 ####springboot web开发 Thymeleaf和jsp#### springboot官方并不推荐JSP技术，推荐使用的是Thymeleaf。原因如下： tomcat只支持war的打包方式，不支持可执行的jar。 Jetty嵌套的容器不支持jsp。 创建自定义的error.jsp不会覆盖错误处理的默认视图。 Thymeleaf是一款用以渲染XML/XHML/HTML5内容的模板引擎。它既可以看动态界面，又可以在没有数据的数据的时候正常查看静态的页面。 Thymeleaf可以轻易的与SpringMVC等web框架进行集成，并作为web应用的模板引擎。有如下特点 SpringMVC中的@Controller中的方法可以直接返回模板名称，Thymeleaf模板会自动进行渲染。 模板中的表达式支持spring表达式（springEL） 支持表单，兼容SpringMVC的数据绑定与验证机制 国际化支持 ####使用Thymeleaf的步骤方法#### 首先引入Thymeleaf依赖1234&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;&lt;/dependency&gt; 如果添加后没有添加进来就启动一下maven的clean操作，如果是idea的话在界面的右边栏MavenProjects-&gt;Plugins-&gt;clean:下面的clean:clean，选中后点击上面的绿色三角启动。编写controller值得复习的就是SpringMVC中的@Controller和@RequestMapping的使用编写HTML模板默认的模板路径为src/main/resource/templates。 如果想要将HTML的静态转换成动态视图，需要在HTML开头添加如下代码1&lt;html xmlns:th="http://www.thymeleaf.org"&gt; 此外，还需要在使用动态处理的元素前使用“th:前缀”。 ####springboot的jsp开发####添加存放jsp文件的目录在一个webapp目录用来存放jsp文件，静态资源扔放置在resources的static下。创建文件夹不能右击然后徐新建文件夹（这种方式不能创建.jsp文件）。创建方法过程如下： idea中右上角project structure（放大镜的左边按钮） 选择左边栏Modules，然后选择中间栏中的Web选项 在右下部分即Web Resource Directories中点击右边的绿色加号，然后增加webapp目录（直接写名字，如果不存在会进行创建）。 引入依赖包注意 【不能和Thymeleaf同时使用，要将Thymeleaf的依赖注释掉，不然会报错（新手问题）】jsp开发需要tomcat容器来运行，并且随使用到jstl标签。进行jsp开发要引入如下依赖包：123456789101112131415161718&lt;!--WEB支持--&gt;&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;&lt;/dependency&gt;&lt;!--jsp页面使用jstl标签--&gt;&lt;dependency&gt; &lt;groupId&gt;javax.servlet&lt;/groupId&gt; &lt;artifactId&gt;jstl&lt;/artifactId&gt;&lt;/dependency&gt;&lt;!--用于编译jsp--&gt;&lt;dependency&gt; &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt; &lt;artifactId&gt;tomcat-embed-jasper&lt;/artifactId&gt; &lt;scope&gt;provided&lt;/scope&gt;&lt;/dependency&gt; 告诉springboot视图在哪里在application.properties中配置返回文件的路径以及类型，就是要渲染的视图。12spring.mvc.view.prefix: /WEB-INF/jsp/spring.mvc.view.suffix: .jsp 如果对jsp开发任然想深入了解，移步结尾处到嘟嘟MD的博客中。 学习整理自（排名不分先后）嘟嘟MD的SpringBoot系列]]></content>
@@ -97,41 +132,6 @@
       </categories>
       <tags>
         <tag>springboot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[JavaIO通信]]></title>
-    <url>%2F2019%2F03%2F10%2FIO%E9%80%9A%E4%BF%A1%E7%AD%89%2F</url>
-    <content type="text"><![CDATA[Java异步阻塞等通信方式介绍 同步与异步：多个任务或者事件发生，其中某个事件的发生会不会导致其他事件的等待，导致整个流程不能继续执行。同步就是必须按照顺序执行，每个事件会对其他事件有影响，所以没有办法并发执行。异步：指这些事件相互之间没有影响，因此可以并发的执行。 阻塞非阻塞：当某个事件在执行过程中，所需要的某个条件没有满足，整个过程停止下来，等待这个条件满足后在往下执行，就是阻塞。而非阻塞就是在条件不满足的情况下，会得到不满足的信号，因此可以让这个执行过程感知到，这样它就可以使用CPU去做不用这个条件的是事。 阻塞IO和非阻塞IO：首先是IO操作：对数据到内存的写入和写出。IO操作的过程是（以读操作为例）：用户线程发起IO请求操作，收到后内核就会查看要读取的消息是否就绪。等到就绪后，内核将数据拷贝到用户线程（内核进行数据拷贝的过程中都会让用户线程阻塞，除了异步IO）。阻塞IO就是在数据没有就绪的时候，一直等待在那里，直到数据拷贝到所在线程。而非阻塞IO就是：在数据没有就绪的时候，内核会返回标志性信息给用户线程数据告知数据没有就绪。因此用户线程可以进行其他调度。。 同步IO和异步IO：同步IO是：一个线程请求IO操作，在该IO操作完成之前，线程会被阻塞。异步IO：IO操作不会导致线程阻塞。造成上述结果是因为要不要使用用户线程。对于同步IO，IO操作如果数据没有就绪，就需要用户线程或者内核不断轮询数据是否就绪，就绪后内核将数据拷贝到用户线程。对于异步IO来说：只有请求IO操作是由用户线程完成，轮询信息状态和拷贝数据都是有内核来完成。不会使用用户线程。因此异步IO必须要有操作系统的底层支持（内核来完成一些事情）。 五种IO模型：阻塞IO：读写数据过程中会发生阻塞现象。数据没有就绪，用户线程会阻塞交出CPU，直到数据背靠背到用户线程。 非阻塞IO：发起IO请求后会立刻得到结果，来分辨数据有无准备好。想要获得数据就需要用户线程轮询是否就绪。 多路复用IO：Java NIO就是使用的多路复用。通过一个线程来轮询所有的状态是否就绪。就绪后才开始需要这个数据的用户线程的真正的IO操作。这样只会使用一个线程的资源。轮询状态是由内核来完成的。通过轮询来检查状态的满足情况，因此，大范围满足时，导致后面事件不能及时处理。 信号驱动IO：用户发起IO请求后留下信号函数（可以理解为联系方式：其中有实际的后续的IO操作），用户线程就会离开做其他的事，数据就绪后内核通知用户线程，收到信号后，用户线程调用信号函数中的后续的IO操作函数（需要用到用户线程）。 异步IO：用户线程发起IO请求后就去做其他的事情。整个IO由内核来完成，收到请求后，立刻返回说”收到任务“，然后等待数据就绪，再将数据拷贝到用户线程。这两步做完后，内核告知用户线程IO操作完成了，数据可以直接使用了。 Reactor和Proactor模式 Reactor模式:将所有要监管的对象（统称做对象，Java 万物皆对象）进行所关注的事件进行分类，改为每类轮询自己这一类事件的对象。 Proactor模式:将IO操作交由内核来完成。检测到事件发生时，交由内核来处理，内核处理完后告知操作完成。 接下来说 Java NIO：Java NIO是面向缓冲区的。数据的读或者写都要经过缓冲区(因为缓冲区的读写是可以立刻执行完的，因此不需要等待)，使用一个线程（叫做选择器）来在多个需要IO操作的不同对象间选择哪些可以立马从缓冲区处理数据的对象。 学习自海子的博客：https://www.cnblogs.com/dolphin0520/p/3916526.html 平凡希：https://www.cnblogs.com/xiaoxi/p/6576588.html Geason崔:https://www.cnblogs.com/geason/p/5774096.html]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Java IO</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[大型网站的架构演进]]></title>
-    <url>%2F2019%2F03%2F10%2F%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E7%9A%84%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%2F</url>
-    <content type="text"><![CDATA[网站如何由小变大 网站从小型的单机架构遇到瓶颈一步步升级为大型的分布式架构。 大型网站的定义：访问量和数据量，海量的数据加上非常高的并发访问量。 Java+单机 数据库和网站项目部署在同一个机器上。各个功能模块之间通过JVM内部的方法调用进行交互，他们都在同一个进程中。 访问量的增大，单机的响应变慢，单机负载较大。 –数据库和应用分离 应用服务器+数据库服务器 访问量增大，应用服务器负载告警 应用服务器的压力增大，可有针对性的进行优化。一种为 将应用从单机到集群而将一台机器变为多台机器，对于系统中要解决的问题有如下两个： 用户对多台应用服务器访问的选择问题。————-DNS或者负载均衡设备。 session问题。 什么是session（会话）？纯属个人理解！！！ 产生：使用网络服务的浏览器和服务器之间的多次交互。基于HTTP支持会话状态的机制使得web服务器可以在多次单独的请求中看到会话。如何区分请求所属于的会话（多个客户端进行服务请求）。在会话开始时服务器会分配唯一的会话标识，并通过cookie告知客户端。在客户端，要求每次进行请求需要带上会话标识。在服务器上每个会话都有独立的存储，保存不同的数据。 session问题就是当服务器由一台增加为多台时，如何保证能够找到请求所属的会话存储的数据。解决方式如下几种： session sticky：在负载均衡处做处理，根据请求所带的标识进行请求转发。这种方式和只有一台时一样，服务器只需要根据到来的请求进行处理，因为这些请求的会话数据一定在本地。一个请求对应一个服务器。缺点是当其中一台服务器出问题宕机，则该服务器上的所有的会话数据会丢失。同时在负载均衡设备上进行处理势必会造成负载的内存消耗增加。 session replication：多个服务器进行会话数据的同步。这样就能实现一条请求对应多个服务器，可以进行路由的择优选择。缺点是会造成网络带宽开销。并且每个服务器都要备份应用中全部的会话数据。 session集中存储：session数据不在服务器本地存储，而是集中存储，每个服务器根据标识或者某种算法在集中池中获得数据。 cookie Based：将session数据存储在客户端本地。通过cookie传递session数据，服务器从cookie中生成会话数据。 总结：对于大型网站来说，session集中存储和session sticky是比较好的方案。 数据读压力变大，数据读写分离 数据量访问量增加，业务大部分都读多写少。此时增加一个数据读库（读库不一定是数据库也可以是能提供读数据的各种读源）只提供读服务。面临两个问题 数据的复制（从读写库到读库）：使用数据库的复制，存在复制时延期间数据短期不一致。可以看到数据库对此的支持是有限的。因此推荐使用分布式数据访问层。 数据源的选择问题。增加的是读源，所以解决的是向读源复制数据。应用根据不同情况选择不同的数据源。写操作走主库，事务中的读操作要走主库 读源 搜索引擎： 大型网站的站内搜索功能，就是一个读库。搜索引擎的倒排表方式很大程度提高检索速度。要根据被搜索数据建立索引， 缓存 cache 加速数据库读取 分布式存储系统 数据库之外的用于存储——弥补关系型数据库的不足更多的是直接代替主库。常见的分布式存储系统有 分布式文件系统：小文件和大文件的存储问题 分布式key-value系统：高性能板结构化支持 分布式数据库：大数据和高并发的数据库系统 读写分离后又遇到瓶颈的数据库——所有数据都一个主库中造成压力瓶颈 解决方式为垂直拆分和水平拆分两种选择 垂直拆分 将数据按照业务进行划分，划分结果为同一个数据库中的数据按照业务分成了多个数据库，每个数据库有自己的连接池，并且会导致数据库事务复杂化为业务事务。解决方式为 使用分布式事务，或者去掉事务或不去追求强事务。 数据量巨大垂直拆分后又会造成瓶颈，将数据水平拆分 水平拆分就是将同一个表中的数据拆分到不同的数据库中（数量可多个） 造成水平拆分的原因是，某个业务的数据量达到单个数据库的瓶颈 水平拆分后需要解决 需要SQL路由 主键的处理不同（自增主键不可用） ####当数据库的问题解决后应用会面对问题####伴随着业务发展，应用功能会会越来越多，应用变大需考虑如何不让应用持续变大，也就是在同一个JVM进程中，所有的应用功能线程争抢同一个线程中的资源（重要的是CPU时间），代码量巨大，因此检查代码也是一个问题。解决办法如下 根据业务特性进行应用拆分例如将不同的功能进行拆分，这要求拆分后的应用之间不存在直接调用（数据如何传递）。被拆分后不同应用系统之间会存在相似的功能性代码，这就有了代码的一致和复用的问题拆分后可能连接相同的数据库。 另一种是走服务化的路线，将应用拆分成3层 web系统 来完成不同的业务功能 服务中心 提供不同的业务服务 数据库 业务的数据库服务化应用后共享的代码放在了服务中心；与数据库的交互放到了服务中心（直接降低数据库的连接数，因为由服务中心来进行数据请求）同时引入了远程的服务调用]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>中间件</tag>
-        <tag>架构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[单机到分布式的变化]]></title>
-    <url>%2F2019%2F03%2F10%2F%E5%8D%95%E6%9C%BA%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E6%94%B9%E5%8F%98%2F</url>
-    <content type="text"><![CDATA[单机与分布式的区别 分布式系统的意义：组件分布在网络计算机上，组件之间仅通过消息传递来通信兵协调工作。 多进程模式：多个进程之间的内存空间是相互独立的，多进程共享数据设计到序列化和反序列化。 组成计算机的5个要素：输入设备、输出设备、运算器、控制器、存储器。将应用从单机扩展到分布式： 要素 分布式 单机 输入设备 接受其它节点信息的节点 传统的人机交互设备 输出设备 向其它节点传递消息时的节点 传统人机交互设备 控制器变化 在分布式中改为控制方式，作用为：协调或者控制节点之间的动作和行为，换句话说就是决定由谁来处理请求 单机中的控制器 运算器变化 有多个节点来组成，构成运算器的多个节点在控制器的配合下对外提供服务 单机的运算器 存储器的变化 分布式中的存储需要控制器配合使用 单机中的存储器 控制器的变化补充： 如何实现节点间的配对 硬件负载均衡：系统中的所有请求都要经过该应硬件设备，硬件负载将数据分流转发，类似于路由器的转发。 软件负载：LVS透明代理。服务的消费者和生产者只需要知道中间代理的地址就可以进行节点间的服务的使用。通过LVS透明代理，让请求方认为是中间代理完成了请求的处理。让处理方认为是中间代理进行的请求。所以请求方与处理方不需要知道彼此的地址就可以进行交流。 软件负载具有如下的缺点： 在请求的必经之路上增加了网络的开销。 因为是请求方与处理方彼此透明，通过中间代理进行交流。中间的代理就是枢纽，作用无可代替，因此需要保证无差错的运行。 使用名称服务器的直连来发现相对的节点：地址交换的作用类似于DNS服务器的发现方式。请求方将需要的服务发送给名称服务器，服务器将提供该服务的所有的服务器地址发送给请求方。 采用规则服务器发送控制路由的直连调用：方式与名称服务器类似，不同在于在接受到服务请求后，规则服务器将选择处理器的规则发送给请求方。 看到一个推荐，虽然不太明白。更多运用在有状态的场景中，例如数据或者缓存。猜测可能是根据不同的请求内容有不同的规则来进行分等级处理或者什么分区域。 任务的分配和管理：分为两个角色 master：管理任务，由master将任务分配给不同的worker进行处理 worker：任务处理。 分布式系统的难点： 缺乏全局时钟，解决为关注动作的相对次序，不在根据准确的时间。 故障独立性：指的是整个系统中的一部分存在故障问题，而其他设备正常。 单点故障：单点的定义为（某个角色或者某个功能只有一台机器在支撑）。解决方式为： 给单点做好备份，尽量降低自动恢复的时间 降低故障的影响范围 事务处理]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>中间件</tag>
-        <tag>架构</tag>
       </tags>
   </entry>
   <entry>
